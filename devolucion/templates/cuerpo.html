@@ -1,0 +1,118 @@
+{% load tags %}
+<div class="container">
+    <hr/>
+    <div id="cabecera" class="span-24 last">
+        <div id="informacion-turno" class="span-13 colborder">
+            <div id="mensaje" class="span-14 last">
+                DEVOLUCI&Oacute;N
+            </div>
+            <strong>
+            	<span id='fecha-devolucion'></span>
+			</strong>				
+        </div>
+        <div id="botones" class="span-10 last">
+            <div class="span-5">
+                <a id="a-cancelar-devolucion" href="/devolucion/">Cancelar devoluci&oacute;n</a>
+            </div>
+            <div class="span-5 last">
+                <a id="a-devolucion" href="/venta/venta/">Venta</a>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div id="contenido" class="span-24 last">
+        <div id="buscador-detalle" class="span-24 last">
+	        <h3 class="caps">Buscador de productos</h3>    	
+            <form id="formulario-detalle">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                Nombre
+                            </th>
+                            <th>
+                                Precio venta
+                            </th>
+                            <th>
+                                Cantidad
+                            </th>
+                            <th>
+                                Opciones
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span id='elemento-descripcion'></span>
+                            </td>
+                            <td>
+                                <span id='elemento-precio'></span>
+                            </td>
+                            <td>
+                                <input id="cantidad" type="text" name="cantidad" size="5"/>
+                            </td>
+                            <td>
+                                <a id="a-agregar" href="#">A&ntilde;adir</a>
+                                <a id="a-cancelar" href="#">Cancelar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+            <form id="formulario-elemento">
+                <table>
+                    <thead>
+                        <th>
+                            C&oacute;digo barra
+                        </th>
+                    </thead>
+                    <tbody>
+                        <td>
+                            <input id="codigo-barra" type="text"/><input type="submit" value="Buscar" />
+                        </td>
+                    </tbody>
+                </table>
+            </form>
+			<hr/>
+        </div>
+        <div id="detalle-devolucion" class="span-24 last">
+			<h3 class="texto"class="caps">
+				Productos y/o promociones involucrados en la devoluci&oacute;n
+			</h3>    	
+            <table id="elementos-devolucion">
+                <thead>
+                    <th>
+                        Opciones
+                    </th>
+                    <th>
+                        Descripci&oacute;n
+                    </th>
+                    <th>
+                        Precio venta
+                    </th>
+                    <th>
+                        Cantidad
+                    </th>
+                    <th>
+                        Precio total
+                    </th>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <form id='formulario-devolucion'>
+				<hr/>        	
+                <input id="boton-devolucion" type="button" value="Registrar devoluci&oacute;n" />
+            </form>
+        </div>
+        <div id="logo" class="span-24 last">
+            <img src="/media/static/images/logo.png" alt="CreceLibre Ltda." />
+            <p class="alt">
+                ©Desarrollado por CreceLibre Consultores en Tecnolog&iacute;as Ltda.
+            </p>
+        </div>
+        <hr/>
+    </div>
+    <script type="text/javascript" src="/media/static/js/devolucion/cuerpo_devolucion.js">
+    </script>

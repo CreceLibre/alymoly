@@ -1,0 +1,74 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_modify adminmedia %}
+{% block extrahead %}{{ block.super }}
+{{ form.media }}
+{% endblock %}
+{% block extrastyle %}{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/forms.css" />
+{% endblock %}
+{% block coltype %}{% if ordered_objects %}colMS{% else %}colM{% endif %}{% endblock %}
+{% block bodyclass %}{{ opts.app_label }}-{{ opts.object_name.lower }} change-form{% endblock %}
+{% block breadcrumbs %}{% if not is_popup %}
+<div class="breadcrumbs">
+    <a href="/admin">{% trans "Home" %}</a>
+    &rsaquo; <a href="/admin/inventario/">Inventario</a>
+    &rsaquo; <a href=".">Stock Cr&iacute;tico</a>
+</div>
+{% endif %}{% endblock %}
+{% block content %}<h2>Stock Cr&iacute;tico</h2>
+<div id="content-main">
+    {% block object-tools %}
+    {% if change %}{% if not is_popup %}
+    <ul class="object-tools">
+        <li>
+            <a href="history/" class="historylink">{% trans "History" %}</a>
+        </li>
+        {% if has_absolute_url %}
+        <li>
+            <a href="../../../r/{{ content_type_id }}/{{ object_id }}/" class="viewsitelink">{% trans "View on site" %}</a>
+        </li>{% endif%}
+    </ul>
+    {% endif %}{% endif %}
+    {% endblock %}
+    <form id="my_form" action="." method="POST">
+        <div>
+            <fieldset class="module aligned extrapretty">
+                <h2>Stock Cr&iacute;tico</h2>
+                <div class="description">
+                    El siguiente listado muestra todos los productos que se encuentren bajo <strong>stock cr&iacute;tico</strong>. 
+                    <br/>
+                    <br/>
+                </div>
+                <div class="form-row nombre marca  ">
+                    <div class="field-box">
+                        {{ form.bodega.errors }}
+                        <label class="required inline" for="id_proveedor">
+                            {{ form.bodega.label }}:
+                        </label>
+                        {{ form.bodega }}
+                        <p class="help">
+                            {{ form.bodega.help_text }}
+                        </p>
+                    </div>
+                </div>
+                <div style="display:none">
+                    {{ form.tipo }}
+                </div>
+            </fieldset>
+        </div>
+    </form>
+    <style type="text/css">
+        #changelist-search {
+            background: #E1E1E1 url(/media/admin/img/admin/nav-bg.gif) repeat-x scroll left top;
+            border-bottom: 1px solid #DDDDDD;
+            color: #666666;
+            padding: 3px;
+        } .qs_input {
+            width: 300px
+        }
+    </style>
+   
+    <div id="stock-critico">
+    </div>
+
+</div>{% endblock %}

@@ -1,0 +1,218 @@
+/**
+# # # # # # # # # # # # # # # # # # # # # # # #
+# Todos los derechos reservados a:            #
+# CreceLibre Consultores en Tecnolog’as Ltda. #
+#                                             #
+# ©Milton Inostroza Aguilera                  #
+# minostro@crecelibre.cl                      #
+# 2009                                        #
+# # # # # # # # # # # # # # # # # # # # # # # #
+  
+ Base de estilo para presentar de una forma amigable la interfaz de usuario al
+ vendedor.
+  
+*/
+
+.a-eliminar, #a-agregar, #a-cancelar, #a-ayuda, .a-aumentar, .a-disminuir{
+	padding-left:17px;
+	text-decoration:none;
+}
+
+#a-ayuda{
+	background: transparent url(/media/static/images/info16.png) no-repeat scroll 0 0;	
+}
+
+.a-eliminar{
+	background: transparent url(/media/static/images/delete16.png) no-repeat scroll 0 0;
+}
+
+#a-agregar{
+	background: transparent url(/media/static/images/add1-16.png) no-repeat scroll 0 0;
+}
+
+#a-cancelar{
+	background: transparent url(/media/static/images/cancel16.png) no-repeat scroll 0 0;
+}
+
+.a-aumentar{
+	background: transparent url(/media/static/images/aumentar16.png) no-repeat scroll 0 0;
+}
+
+.a-disminuir{
+	background: transparent url(/media/static/images/disminuir16.png) no-repeat scroll 0 0;
+}
+
+#a-devolucion, #a-cancelar-venta, #a-cerrar-turno{
+	padding-left:52px;
+	text-decoration:none;
+	text-align:center;
+	display:table-cell;
+	margin:auto;
+	text-decoration:none;
+	vertical-align:middle;
+	height:52px;
+}
+
+#a-ultima-venta{
+	text-decoration:none;
+}
+
+#a-devolucion{
+	background: transparent url(/media/static/images/devolucion.png) no-repeat scroll 0 0;
+}
+
+#a-cancelar-venta{
+	background: transparent url(/media/static/images/cancelar.png) no-repeat scroll 0 0;
+}
+
+#a-cerrar-turno{
+	background: transparent url(/media/static/images/cerrar.png) no-repeat scroll 0 0;
+}
+
+/*Para nombre de promociones o productos compuestos demasiado largos*/
+.box .caps, .box_elemento .caps, #box-venta .caps{
+	line-height:100%;
+}
+
+.impar{
+	background:#E5ECF9 none repeat scroll 0 0;
+}
+
+#logo{
+	display:block;
+	text-align:center;
+	margin:auto;
+}
+
+.correcto{
+	color:#00BB00
+}
+
+.erroneo{
+	color:#FF0000
+}
+
+#calculador_vuelto{
+	display:none; 
+	cursor: default;
+}
+
+.vuelto{
+	color:#ffffff
+}
+
+#tabla-resumen{
+	padding-top:1em;
+}
+
+#tabla-resumen, #tabla-resumen td, #tabla-resumen th{
+	vertical-align: bottom;
+	padding: 4px 0px 0px 0px;
+}
+
+#box-venta{
+	padding:1.5em;
+	padding-bottom:0.5em;
+	background: #C3D9FF none repeat scroll 0 0;
+	margin-bottom:1.5em;
+}
+
+#ayuda{
+	display:none;
+	cursor: default;
+	text-align:left;	
+}
+
+#ultima-venta{
+	display:none;
+	cursor: default;
+	text-align:left;
+	color:white;
+}
+
+#elementos_ultima_venta{
+	color:white;
+}
+
+#elementos_ultima_venta thead th{
+	background:none;
+	text-decoration:underline;
+}
+
+#ultima-venta h2{
+	color:white;
+	text-decoration:underline;
+	text-align:center;
+}
+
+.linea{
+	border-top-style: solid;
+	border-top:1px solid white;
+}
+
+
+/*-------------------
+ * nuevos estilos para hacer funcionar interfas de venta
+ * -------------------
+*/
+
+#formulario_detalle{
+	display:none;
+}
+
+#elementos-venta{
+	display:none;
+}
+
+#promociones .box-elemento{
+	display:none;
+}
+
+.box-elemento {
+	background:#E5ECF9 none repeat scroll 0 0;
+	margin-bottom:1.5em;
+	padding:1.5em;
+}
+
+#promociones .caps {
+	line-height:100%;
+}
+
+#productos-compuestos .caps {
+	line-height:100%;
+}
+
+#vuelto{
+	display:none;
+}
+
+#vuelto-correcto, #vuelto-incorrecto, #boton-calcular-vuelto, #a-ultima-venta, #tabla-resumen-ultima-venta-span{
+	display:none;
+}
+
+#elementos-ultima-venta tbody, #elementos-ultima-venta tfoot{
+	color:white;
+}
+
+
+/*-------------------
+ * nuevos estilos para hacer funcionar noscript
+ * -------------------
+*/
+
+#error_javascript{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 800px;
+	height: 70px;
+	margin-top: -35px;
+	margin-left: -400px;	
+	overflow: auto;
+	border: 2px dotted red;
+	text-align: center;
+	background-color: #F4F379;
+	overflow: visible;
+}
+
+

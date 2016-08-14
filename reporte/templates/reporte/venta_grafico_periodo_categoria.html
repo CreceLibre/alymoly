@@ -1,0 +1,102 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_modify adminmedia %}
+{% block extrahead %}{{ block.super }}
+{{ form.media }}
+{% endblock %}
+{% block extrastyle %}{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/forms.css" />
+{% endblock %}
+{% block coltype %}{% if ordered_objects %}colMS{% else %}colM{% endif %}{% endblock %}
+{% block bodyclass %}{{ opts.app_label }}-{{ opts.object_name.lower }} change-form{% endblock %}
+{% block breadcrumbs %}{% if not is_popup %}
+<div class="breadcrumbs">
+    <a href="/admin">{% trans "Home" %}</a>
+    &rsaquo; <a href="{% url reporte:index %}">Reporte</a>
+    &rsaquo; <a href=".">Gr&aacute;fico de Ventas por categor&iacute;a por per&iacute;odo</a>
+</div>
+{% endif %}{% endblock %}
+{% block content %}<h2>Gr&aacute;fico de Ventas por categor&iacute;a por per&iacute;odo</h2>
+<div id="content-main">
+    {% block object-tools %}
+    {% if change %}{% if not is_popup %}
+    <ul class="object-tools">
+        <li>
+            <a href="history/" class="historylink">{% trans "History" %}</a>
+        </li>
+        {% if has_absolute_url %}
+        <li>
+            <a href="../../../r/{{ content_type_id }}/{{ object_id }}/" class="viewsitelink">{% trans "View on site" %}</a>
+        </li>{% endif%}
+    </ul>
+    {% endif %}{% endif %}
+    {% endblock %}
+    <form id="my_form" action="." method="POST" target='_blank'>
+        <div>
+            <fieldset class="module aligned extrapretty">
+                <h2>Gr&aacute;fico de Ventas por categor&iacute;a por per&iacute;odo</h2>
+                <div class="description">
+                    El siguiente formulario genera reportes de <strong>Gr&aacute;fico de Ventas por categor&iacute;a por per&iacute;odo</strong>. 
+                    <br/>
+                    <br/>
+                </div>
+                <div class="form-row">
+                    <div class="field-box">
+                        {{ form.fecha_inicio.errors }}
+                        <label class="required inline" for="id_mes">
+                            {{ form.fecha_inicio.label }}:
+                        </label>
+                        {{ form.fecha_inicio }}
+                        <p class="help">
+                            {{ form.fecha_inicio.help_text }}
+                        </p>
+                    </div>
+                    <div class="field-box">
+                        {{ form.fecha_fin.errors }}
+                        <label class="required inline" for="id_fecha_fin">
+                            {{ form.fecha_fin.label }}:
+                        </label>
+                        {{ form.fecha_fin }}
+                        <p class="help">
+                            {{ form.fecha_fin.help_text }}
+                        </p>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="field-box">
+                        {{ form.elemento.errors }}
+                        <label class="required inline" for="id_mes">
+                            {{ form.elemento.label }}:
+                        </label>
+                        {{ form.elemento }}
+                        <p class="help">
+                            {{ form.elemento.help_text }}
+                        </p>
+                    </div>
+                    <div class="field-box">
+                        {{ form.categoria.errors }}
+                        <label class="required inline" for="id_categoria">
+                            {{ form.categoria.label }}:
+                        </label>
+                        {{ form.categoria }}
+                        <p class="help">
+                            {{ form.categoria.help_text }}
+                        </p>
+                    </div>					
+                    <div class="field-box">
+                        {{ form.formato.errors }}
+                        <label class="required inline" for="id_formato">
+                            {{ form.formato.label }}:
+                        </label>
+                        {{ form.formato }}
+                        <p class="help">
+                            {{ form.formato.help_text }}
+                        </p>
+                    </div>
+                </div>				
+            </fieldset>
+            <div class="submit-row">
+                <input type="submit" name="_save" class="default" value="Generar Informe"/>
+            </div>
+        </div>
+    </form>
+</div>{% endblock %}

@@ -1,0 +1,59 @@
+{% if existencias %}
+{% load tags %}
+<table id="tabla_inventario_actual" width="100%" cellspacing="0">
+    <thead>
+        <tr>
+            <th>
+                C&oacute;digo de barra
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Marca
+            </th>
+            <th>
+                Categor&iacute;a
+            </th>
+            <th>
+                Tipo de envase
+            </th>
+            <th>
+                Capacidad
+            </th>
+            <th>
+                Existencia
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for existencia in existencias %}
+        <tr class="{% cycle 'row1' 'row2' %}">
+            <th>
+                {{ existencia.producto.codigo_barra }}
+            </th>
+            <td>
+                {{ existencia.producto.nombre }}
+            </td>
+            <td>
+                {{ existencia.producto.marca }}
+            </td>
+            <td>
+                {{ existencia.producto.categoria }}
+            </td>
+            <td>
+                {{ existencia.producto.tipo_envase }}
+            </td>
+            <td>
+                {{ existencia.producto.capacidad }}
+            </td>
+            <td>
+                <input id="producto-{{ existencia.id }}" type="text" value="{{ existencia.existencia }}" class="valor_existencia"/>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+No se encontraron productos en inventario
+{% endif %}

@@ -1,0 +1,150 @@
+/**
+ # # # # # # # # # # # # # # # # # # # # # # # #
+ # Todos los derechos reservados a:            #
+ # CreceLibre Consultores en Tecnolog’as Ltda. #
+ #                                             #
+ # ©Milton Inostroza Aguilera                  #
+ # minostro@crecelibre.cl                      #
+ # 2009                                        #
+ # # # # # # # # # # # # # # # # # # # # # # # #
+ 
+ Base de estilo para presentar de una forma amigable la interfaz de usuario al
+ vendedor.
+ 
+ */
+.a-eliminar, #a-devolver, #a-agregar, #a-cancelar, .a-aumentar, .a-disminuir {
+    padding-left: 17px;
+    text-decoration: none;
+}
+
+.a-eliminar {
+    background: transparent url(/media/static/images/delete16.png) no-repeat scroll 0 0;
+}
+
+#a-devolver {
+    background: transparent url(/media/static/images/add1-16.png) no-repeat scroll 0 0;
+}
+
+#a-agregar{
+	background: transparent url(/media/static/images/add1-16.png) no-repeat scroll 0 0;
+}
+
+#a-cancelar {
+    background: transparent url(/media/static/images/cancel16.png) no-repeat scroll 0 0;
+}
+
+.a-aumentar {
+    background: transparent url(/media/static/images/aumentar16.png) no-repeat scroll 0 0;
+}
+
+.a-disminuir {
+    background: transparent url(/media/static/images/disminuir16.png) no-repeat scroll 0 0;
+}
+
+#a-devolucion, #a-cancelar-devolucion {
+    padding-left: 52px;
+    text-decoration: none;
+    text-align: center;
+    display: table-cell;
+    margin: auto;
+    text-decoration: none;
+    vertical-align: middle;
+    height: 52px;
+}
+
+#a-devolucion {
+    background: transparent url(/media/static/images/venta.png) no-repeat scroll 0 0;
+}
+
+#a-cancelar-devolucion {
+    background: transparent url(/media/static/images/cancelar.png) no-repeat scroll 0 0;
+}
+
+/*Para nombre de promociones o productos compuestos demasiado largos*/
+.box .caps, .box_elemento .caps, #box-venta .caps {
+    line-height: 100%;
+}
+
+.impar {
+    background: #E5ECF9 none repeat scroll 0 0;
+}
+
+.box_elemento {
+    background: #E5ECF9 none repeat scroll 0 0;
+    margin-bottom: 1.5em;
+    padding: 1.5em;
+}
+
+#logo {
+    display: block;
+    text-align: center;
+    margin: auto;
+}
+
+.correcto {
+    color: #00BB00
+}
+
+.erroneo {
+    color: #FF0000
+}
+
+#tabla-resumen {
+    margin-top: 1.5em;
+}
+
+#tabla-resumen, #tabla-resumen td, #tabla-resumen th {
+    vertical-align: bottom;
+    padding: 4px 4px 0px 0px;
+}
+
+#box-devolucion {
+    padding: 1.5em;
+    padding-bottom: 0.5em;
+    background: #C3D9FF none repeat scroll 0 0;
+    margin-bottom: 1.5em;
+}
+
+body {
+    background-color: lightcyan;
+}
+
+#mensaje {
+    float: left;
+    text-align: center;
+    font-size: 5em;
+    font-weight: bold;
+    margin-top: -20px;
+    color: lightblue;
+}
+
+#formulario-detalle, #formulario-devolucion, #elementos-devolucion, #detalle-devolucion{
+	display:none;
+}
+
+#fecha-devolucion{
+	text-align:center;
+	display:block;
+	margin-bottom:5px;
+}
+
+#boton-devolucion{
+	display:inline;
+}
+
+#detalle-devolucion{
+	text-align:center;
+	margin-bottom:1.45em;
+}
+
+#elementos-devolucion tbody tr{	
+	font-size:large;
+}
+
+#elementos-venta-opciones{
+	margin-top: 14px;
+}
+
+.texto{
+	text-align:left;
+}

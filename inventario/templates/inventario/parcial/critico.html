@@ -1,0 +1,43 @@
+{% if productos %}
+{% load tags %}
+<div id="changelist" class="module filtered">
+    <table id="tabla_turnos" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th>
+                    C&oacute;digo 
+                </th>
+                <th>
+                    Nombre 
+                </th>
+                <th>
+                    Stock Cr&iacute;tico Establecido
+                </th>
+                <th>
+                    Existencia Actual
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for existencia in productos %}
+            <tr class="{% cycle 'row1' 'row2' %}">
+                <th>
+                    {{ existencia.producto.codigo_barra }}
+                </th>
+                <td>
+                    {{ existencia.producto.nombre }}
+                </td>
+                <td>
+                    {{ existencia.producto.stock_critico }}
+                </td>
+                <td>
+                    {{ existencia.existencia }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+No se encontraron productos en stock cr&iacute;tico.
+{% endif %}

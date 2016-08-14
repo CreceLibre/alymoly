@@ -1,0 +1,93 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_modify adminmedia %}
+
+{% block extrahead %}{{ block.super }}
+{{ form.media }}
+{% endblock %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/forms.css" />{% endblock %}
+
+{% block coltype %}{% if ordered_objects %}colMS{% else %}colM{% endif %}{% endblock %}
+
+{% block bodyclass %}{{ opts.app_label }}-{{ opts.object_name.lower }} change-form{% endblock %}
+{% block breadcrumbs %}{% if not is_popup %}
+<div class="breadcrumbs">
+    <a href="/admin">{% trans "Home" %}</a>
+    &rsaquo; <a href="/admin/mantenedor/">Mantenedor</a>
+    &rsaquo; <a href="/admin/producto_compuesto/">Producto Compuesto</a>
+    &rsaquo; Nuevo Producto Compuesto
+</div>
+{% endif %}{% endblock %}
+{% block content %}<h2>Producto Compuesto</h2>
+<div id="content-main">
+    {% block object-tools %}
+    {% if change %}{% if not is_popup %}
+    <ul class="object-tools">
+        <li>
+            <a href="history/" class="historylink">{% trans "History" %}</a>
+        </li>
+        {% if has_absolute_url %}
+        <li>
+            <a href="../../../r/{{ content_type_id }}/{{ object_id }}/" class="viewsitelink">{% trans "View on site" %}</a>
+        </li>{% endif%}
+    </ul>
+    {% endif %}{% endif %}
+    {% endblock %}
+    <form action="." method="POST">
+        <div>
+            <fieldset class="module aligned extrapretty">
+                <h2>Producto Compuesto</h2>
+                <div class="description">
+                    En el siguiente formulario se relacionan los productos como <strong>productos compuestos</strong>
+                    de otros productos. 
+                    <br/>
+                    <br/>
+                </div>
+                <div class="form-row nombre marca  ">
+                    <div class="field-box">
+                        {{ form.codigo_barra_compuesto.errors }}
+                        <label class="required" for="id_sucursal">
+                            {{ form.codigo_barra_compuesto.label }}:
+                        </label><span class="nombre_producto" style="font-size:2em"></span>
+                        {{ form.codigo_barra_compuesto }}
+                        <p class="help">
+                            {{ form.codigo_barra_compuesto.help_text }}
+                        </p>
+                    </div>
+                </div>
+                <div class="form-row nombre marca  ">
+                    <div class="field-box">
+                        {{ form.codigo_barra_compone.errors }}
+                        <label class="required inline" for="id_proveedor">
+                            {{ form.codigo_barra_compone.label }}:
+                        </label><span class="nombre_producto" style="font-size:2em"></span>
+                        {{ form.codigo_barra_compone }}
+                        <p class="help">
+                            {{ form.codigo_barra_compone.help_text }}
+                        </p>
+                    </div>
+                </div>
+                <div class="form-row nombre marca  ">
+                    <div class="field-box">
+                        {{ form.cantidad_compone.errors }}
+                        <label class="required inline" for="id_proveedor">
+                            {{ form.cantidad_compone.label }}:
+                        </label>
+                        {{ form.cantidad_compone }}
+                        <p class="help">
+                            {{ form.cantidad_compone.help_text }}
+                        </p>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="submit-row">
+                {% if show_delete_link %}
+                <p class="deletelink-box">
+                    <a href="delete/" onclick="return confirm('A continuaci&oacute;n se eliminar&aacute; la relaci&oacute;n de producto compuesto. &#191;Desea continuar?')" class="deletelink">{% trans "Delete" %}</a>
+                </p>{% endif %}<input type="submit" name="_save" class="default" value="Grabar"/>
+            </div>
+        </div>
+    </form>
+    <div id="inventario_actual">
+    </div>
+</div>{% endblock %}

@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-cl" xml:lang="es-cl" >
+<head>
+	<title>M&oacute;dulo de ventas</title>
+	<link rel="stylesheet" type="text/css" href="/media/static/css/venta/login.css" />
+	<link rel="stylesheet" type="text/css" href="/media/static/css/venta/layout.css" />
+	<link rel="stylesheet" type="text/css" href="/media/static/css/venta/global.css" />
+	<style>
+		.login .form-row label{
+			width:18em;
+		}
+		.login #container{
+			min-width:860px;
+		}
+		.login .submit-row{
+			padding:1em 0 0 15.4em
+		}
+	</style>
+	<meta name="robots" content="NONE,NOARCHIVE" />
+	<script type="text/javascript" src="/media/static/js/jquery.js"></script>
+	<script type="text/javascript" src="/media/static/js/utils/sucursal/sucursal.js"></script>		
+</head>
+<body class="login">
+	<div id="container">
+	    <div id="header">
+	        <div id="branding">
+	        	<h1 id="site-name">M&oacute;dulo de ventas <span id='nombre-sucursal'></span></h1>
+	        </div>
+	    </div>
+	    <div id="content" class="colM">
+	    	Su turno ha sido cerrado de forma exitosa!.  Si desea iniciar turno nuevamente presione <a href='/venta/'>aqu&iacute;</a>
+			<div id="content-main">
+				<form action="." method="post" id="login-form">
+					<div>
+						<fieldset class="module aligned extrapretty">
+							<h2>Boleta de dep&oacute;sito</h2>
+							<img src="/venta/boleta/deposito/{{id}}/" width='100%' height='100%'/>
+						</fieldset>
+					</div>
+				</form>	
+			</div>
+	        <br class="clear" />
+	    </div>
+	    <div id="footer"></div>
+	</div>
+</body>
+</html>

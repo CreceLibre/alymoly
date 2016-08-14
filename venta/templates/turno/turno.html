@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-cl" xml:lang="es-cl" >
+<head>
+	<title>Inicio Turno | M&oacute;dulo de ventas</title>
+	<link rel="stylesheet" type="text/css" href="/media/static/css/venta/login.css" />
+	<link rel="stylesheet" type="text/css" href="/media/static/css/venta/layout.css" />
+	<link rel="stylesheet" type="text/css" href="/media/static/css/venta/global.css" />
+	<style>
+		.login .form-row label{
+			width:14em;
+		}
+		.login #container{
+			min-width:500px;
+		}
+		.login .submit-row{
+			padding:1em 0 0 15.4em
+		}
+		
+		#fecha-apertura-turno{
+		    line-height: 2em;
+		}
+	</style>
+	<meta name="robots" content="NONE,NOARCHIVE" />
+	{{formulario.media}}
+	<script type="text/javascript">
+		$(function($) {
+		  var options = {
+		     format: '%A, %d %B %Y %H:%M:%S'
+		  }
+		  $('#fecha-apertura-turno').jclock(options);
+		});
+	</script>
+</head>
+<body class="login">
+	<div id="container">
+	    <div id="header">
+	        <div id="branding">
+	        	<h1 id="site-name">Inicio Turno | M&oacute;dulo de ventas <span id='nombre-sucursal'></span></h1>
+	        </div>
+	    </div>
+	    <div id="content" class="colM">
+	    	Bienvenido(a), <strong>{{trabajador.get_nombre_completo}}</strong> a nuestra sucursal <strong>{{sucursal}}</strong>
+	    	{% if formulario.errors %}
+	    		<p class="errornote">
+	    			Favor corregir los campos err&oacute;neos.
+				</p>
+                <ul class="errorlist">
+                {% for error in formulario.non_field_errors %}
+                <li>
+                    {{ error }}
+                </li>
+                {% endfor %}
+                </ul>
+
+			{% endif %}
+			<div id="content-main">
+				<form action="." method="post" id="login-form">
+					<div>
+						<fieldset class="module aligned extrapretty">
+							<div class="form-row fecha-apertura-turno">
+					                <label for="id-fecha-apretura-turno">Fecha apertura turno</label> : <strong><span id="fecha-apertura-turno"></span></strong>				
+							</div>							
+					        {% if formulario.monto_apertura_caja.errors%}
+								<div class="form-row errors {{formulario.monto_apertura_caja.label}}">
+						            {{ formulario.monto_apertura_caja.errors }}
+						            {{ formulario.monto_apertura_caja.label_tag }}: {{ formulario.monto_apertura_caja }}
+									{% if formulario.monto_apertura_caja.help_text %}
+										<p class="help">{{ formulario.monto_apertura_caja.help_text}}</p>
+									{% endif %}																		
+								</div>
+							{% else %}
+								<div class="form-row {{formulario.monto_apertura_caja.label}}">
+						            {{ formulario.monto_apertura_caja.label_tag }}: {{ formulario.monto_apertura_caja }}
+									{% if formulario.monto_apertura_caja.help_text %}
+										<p class="help">{{ formulario.monto_apertura_caja.help_text}}</p>
+									{% endif %}							
+								</div>							
+							{% endif%}
+						</fieldset>
+						<div class="submit-row">
+							<input type="submit" value="Abrir turno" id="id_abrir_turno"/>
+						</div>
+					</div>
+				</form>	
+				<script type="text/javascript">
+					document.getElementById('id_monto_apertura_caja').focus()
+				</script>
+			</div>
+	        <br class="clear" />
+	    </div>
+	    <div id="footer"></div>
+	</div>
+</body>
+</html>

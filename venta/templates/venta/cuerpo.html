@@ -1,0 +1,304 @@
+{% load tags %}
+<div class="container">
+	<noscript>
+		<link rel="stylesheet" href="/media/static/css/venta/venta.css" type="text/css" />
+		<div id="error_javascript">
+			<img alt="alerta" src="/media/static/images/alerta.png"/>
+			Su Navegador tiene <strong>JavaScript</strong> bloqueado o desactivado, lo que est&aacute; impidiendo ver correctamente esta p&aacute;gina.
+		</div>
+	</noscript>
+    <hr/>
+    <div id="cabecera" class="span-24 last">
+        <div id="informacion-turno" class="span-11 colborder">
+            <div class="quiet">
+                Bienvenido(a), <strong><span id='turno-trabajador'></span></strong>
+                a nuestra sucursal <strong><span id='turno-sucursal'></span></strong>
+            </div>
+            <div class="quiet">
+                Fecha inicio turno: <span id='turno-fecha-apertura-sistema'></span>
+            </div>
+            <div class="quiet">
+				Fecha venta : <span id='venta-fecha-venta'></span>
+            </div>
+        </div>
+        <div id="botones" class="span-12 last">
+            <div class="span-4">
+                <a id="a-devolucion" href="/devolucion/">Devoluci&oacute;n</a>
+            </div>
+            <div class="span-4">
+                <a id="a-cancelar-venta" href="/venta/venta/">Cancelar venta</a>
+            </div>
+            <div class="span-4 last">
+                <a id="a-cerrar-turno" href="/venta/turno/cerrar">Cerrar turno</a>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div id="contenido" class="span-24 last">
+        <div id="cabecera-venta" class="span-24 last">
+            <div class="span-11 colborder">
+                <table id="tabla-resumen">
+                    <tbody>
+                        <tr>
+                            <th>
+                                Total afecto
+                            </th>
+                            <th>
+                                :
+                            </th>
+                            <td>
+                            	<span id='total_afecto'>0</span>
+                            </td>
+                            <th>
+                                Total exento
+                            </th>
+                            <th>
+                                :
+                            </th>
+                            <td>
+                            	<span id='total_exento'>0</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Medio pago
+                            </th>
+                            <th>
+                                :
+                            </th>
+                            <td>
+                                <input type="radio" checked="true" value="1" class="medio_pago" name="medio_pago" id='medio-pago-efectivo' />Efectivo
+								<input type="radio" value="2" class="medio_pago" name="medio_pago" id='medio-pago-otro' />Otro
+                            </td>
+                            <th colspan='3' id='tabla-resumen-ultima-venta'>
+                            	<a href='#' id='a-ultima-venta'>Ultima venta registrada</a>
+								<span id='tabla-resumen-ultima-venta-span'>No ha registrado ninguna venta.</span>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="span-12 last">
+                <div id="box-venta" class="span-11 last">
+                    <div class="span-6">
+                        <h5 class="caps">Total venta: <span id='monto-total'>0</span></h5>
+                    </div>
+                    <div class="span-5 last">
+                        <h5 class="caps">Total productos: <span id='total-productos'>0</span></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="span-17 colborder">
+            <h3 class="caps">Buscador de productos y promociones</h3>
+            <div id="buscador-detalle" class="span-17">
+                <form id="formulario_detalle">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>
+                                    Nombre
+                                </th>
+                                <th>
+                                    Precio venta
+                                </th>
+                                <th>
+                                    Cantidad
+                                </th>
+                                <th>
+                                    Opciones
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span id='elemento_descripcion'></span>
+                                </td>
+                                <td>
+                                    <span id='elemento_precio_venta'></span>
+                                </td>
+                                <td>
+                                    <input id="cantidad" type="text" name="cantidad" size="5"/>
+                                </td>
+                                <td>
+                                    <a id="a-agregar" href="#">A&ntilde;adir</a>
+                                    <a id="a-cancelar" href="#">Cancelar</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+                <form id="formulario_elemento">
+                    <table>
+                        <thead>
+                            <th>
+                                C&oacute;digo barra
+                            </th>
+                        </thead>
+                        <tbody>
+                            <td>
+                                <input id="codigo_barra" type="text" name="codigo_barra" />
+								<input type="submit" value="Buscar" />
+								<input id="boton-calcular-vuelto" type="button" value="Calcular vuelto" />
+								<input id="boton-venta" type="button" value="Registrar venta" /><a id="a-ayuda" href="#">&iquest;Dudas?</a>
+                            </td>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <hr/><h3 class="caps">Productos y/o promociones involucrados en la venta</h3>
+            <div id="detalle-venta" class="span-17">
+                <table id="elementos-venta">
+                    <thead>
+                        <th>
+                            Opciones
+                        </th>
+                        <th>
+                            Descripci&oacute;n
+                        </th>
+                        <th>
+                            Precio venta
+                        </th>
+                        <th>
+                            Cantidad
+                        </th>
+                        <th>
+                            Precio total
+                        </th>
+                    </thead>
+					<tbody></tbody>
+                </table>
+                <div id='detalle-vacio' class="quiet">
+                    No existen productos o promociones asociados a esta venta.
+                </div>
+            </div>
+        </div>
+        <div id="observaciones" class="span-6 last">
+            <div id="promociones">
+                <h3 class="caps">Detalle Promociones</h3>
+                <div class="box">
+                    <div class="quiet">
+                        Su venta no registra promociones.
+                    </div>
+                </div>
+            </div>
+            <div id="productos-compuestos" class="prepend-top">
+                <h3 class="caps">Productos compuestos</h3>
+                <div class="box">
+                    <div class="quiet">
+                        Su venta no registra productos compuestos.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div id="logo" class="span-24 last">
+        <img src="/media/static/images/logo.png" alt="CreceLibre Ltda." />
+        <p class="alt">
+            ©Desarrollado por CreceLibre Consultores en Tecnolog&iacute;as Ltda.
+        </p>
+    </div>
+    <hr/>
+</div>
+<div id="ayuda">
+    <ul>
+        <li>
+            Para registrar una promoci&oacute;n debe anteponer el caracter 
+            <big>
+                *
+            </big>
+            (asterisco).
+        </li>
+        <li>
+            Para calcular vuelto sin presionar el bot&oacute;n 
+            <big>
+                calcular vuelto
+            </big>
+            presione la tecla 
+            <big>
+                esc
+            </big>.
+        </li>
+        <li>
+            Para registrar una venta sin presionar el bot&oacute;n 
+            <big>
+                Registrar venta
+            </big>
+            presione la tecla 
+            <big>
+                tab
+            </big>.
+        </li>
+    </ul>
+</div>
+<div id='vuelto'>
+    <h1 class="quiet">Calculador de vuelto</h1>
+    <table class="vuelto">
+        <tbody>
+            <tr>
+                <th>
+                    Total venta
+                </th>
+                <th>
+                    :
+                </th>
+                <th>
+                    <span id='vuelto-monto-total'></span>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Total pago
+                </th>
+                <th>
+                    :
+                </th>
+                <th>
+                    <input type="text" name="pago_cliente" id="vuelto-pago-cliente" />
+                </th>
+            </tr>
+        </tbody>
+    </table>
+	<div id='vuelto-relleno'>
+		<br />
+		<br />
+	    <input type="button" id="vuelto-relleno-boton-cancelar-vuelto" value="Cancelar" />		
+	</div>	
+	<div id='vuelto-correcto'>
+		<h3 class="correcto">Total Vuelto: <span id='vuelto-correcto-monto-vuelto'></span></h3>
+	    <input type="button" id="vuelto-correcto-boton-venta" value="Registrar venta" />
+	    <input type="button" id="vuelto-correcto-boton-cancelar-vuelto" value="Cancelar" />		
+	</div>
+	<div id='vuelto-incorrecto'>
+		<h3 class="erroneo">Total Vuelto: <span id='vuelto-incorrecto-monto-vuelto'></span></h3>
+	    <input type="button" id="vuelto-incorrecto-boton-cancelar-vuelto" value="Cancelar" />		
+	</div>
+</div>
+<div id="ultima-venta">
+    <h2>&Uacute;ltima venta registrada</h2>
+    <table id="elementos-ultima-venta">
+        <thead>
+            <th>
+                Descripci&oacute;n
+            </th>
+            <th>
+                Precio venta
+            </th>
+            <th>
+                Cantidad
+            </th>
+            <th>
+                Precio total
+            </th>
+        </thead>
+        <tbody>
+        </tbody>
+        <tfoot>
+        </tfoot>
+    </table>
+</div>
+<script type="text/javascript" src="/media/static/js/venta/cuerpo_venta.js">
+</script>

@@ -1,0 +1,78 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_modify adminmedia %}
+{% block extrahead %}{{ block.super }}
+{{ form.media }}
+{{ buscar_form.media }}
+{% endblock %}
+{% block extrastyle %}{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/forms.css" />
+{% endblock %}
+{% block coltype %}{% if ordered_objects %}colMS{% else %}colM{% endif %}{% endblock %}
+{% block bodyclass %}{{ opts.app_label }}-{{ opts.object_name.lower }} change-form{% endblock %}
+{% block breadcrumbs %}{% if not is_popup %}
+<div class="breadcrumbs">
+    <a href="/admin">{% trans "Home" %}</a>
+    &rsaquo; <a href="/admin/inventario/">Inventario</a>
+    &rsaquo; <a href=".">Inventario Actual</a>
+</div>
+{% endif %}{% endblock %}
+{% block content %}<h2>Inventario Actual</h2>
+<div id="content-main">
+    {% block object-tools %}
+    {% if change %}{% if not is_popup %}
+    <ul class="object-tools">
+        <li>
+            <a href="history/" class="historylink">{% trans "History" %}</a>
+        </li>
+        {% if has_absolute_url %}
+        <li>
+            <a href="../../../r/{{ content_type_id }}/{{ object_id }}/" class="viewsitelink">{% trans "View on site" %}</a>
+        </li>{% endif%}
+    </ul>
+    {% endif %}{% endif %}
+    {% endblock %}
+    <form action="." method="POST">
+        <fieldset class="module aligned extrapretty">
+            <h2>Inventario Actual</h2>
+            <div class="description">
+                En este proceso, se muestra el stock actual de productos para una <strong>bodega</strong>
+                seleccionada. Es posible tambi&eacute;n, establecer un valor arbitrario de existencia para un producto dado. Si se desea 
+				establecer un valor de existencia, debe estar seguro de que el valor que ingresar&aacute; es el valor correcto.
+                <br/>
+                <br/>
+            </div>
+            <div class="form-row nombre marca  ">
+                <div class="field-box">
+                    {{ form.bodega.errors }}
+                    <label class="required inline" for="id_marca">
+                        {{ form.bodega.label }}:
+                    </label>
+                    {{ form.bodega }}
+                    <p class="help">
+                        {{ form.bodega.help_text }}
+                    </p>
+                </div>
+            </div>
+            <br/>
+        </fieldset>
+    </form>
+    <style type="text/css">
+        #changelist-search {
+            background: #E1E1E1 url(/media/admin/img/admin/nav-bg.gif) repeat-x scroll left top;
+            border-bottom: 1px solid #DDDDDD;
+            color: #666666;
+            padding: 3px;
+        } .qs_input {
+            width: 300px
+        }
+    </style>
+    <div id="changelist" class="module filtered">
+        <form class="quicksearch" id="changelist-search" action="#">
+            <label class="qs_label">
+                <img src="/media/admin/img/admin/icon_searchbox.png" alt="Search"/>
+            </label>{{buscar_form.texto}}<span class="loader" id="loader" style="display: none;"><img src="/media/static/img/ajax-loader.gif" alt="Search"/></span>
+        </form>
+        <div id="inventario-actual">
+        </div>
+    </div>
+</div>{% endblock %}

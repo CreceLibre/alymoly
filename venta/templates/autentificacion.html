@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-cl" xml:lang="es-cl" >
+<head>
+	<title>Iniciar sesi&oacute;n | M&oacute;dulo de ventas</title>
+	<link rel="stylesheet" type="text/css" href="/media/static/css/venta/login.css" />
+	<link rel="stylesheet" type="text/css" href="/media/static/css/venta/layout.css" />
+	<link rel="stylesheet" type="text/css" href="/media/static/css/venta/global.css" />
+	<style>	
+		.login .submit-row{
+			padding:1em 0 0 12.4em
+		}
+		            .login .form-row label {
+                width: 10em;
+            }
+	</style>
+	<meta name="robots" content="NONE,NOARCHIVE" />
+	{{formulario.media}}
+	<script type="text/javascript" src="/media/static/js/utils/sucursal/sucursal.js"></script>	
+</head>
+<body class="login">
+	<div id="container">
+	    <div id="header">
+	        <div id="branding">
+	        	<h1 id="site-name">M&oacute;dulo de ventas <span id='nombre-sucursal'></span></h1>
+	        </div>
+	    </div>
+	    <div id="content" class="colM">
+                {% if formulario.errors %}
+                <p class="errornote">
+                    Favor corregir los campos err&oacute;neos.
+                </p>
+                <ul class="errorlist">
+                    {% for error in formulario.non_field_errors %}
+                    <li>
+                        {{ error }}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+			<div id="content-main">
+				<noscript>
+					<div id="error_javascript">
+						<img alt="alerta" src="/media/static/images/alerta.png" height="5%" width="5%"/>
+						Favor habilite <strong>JavaScript</strong> para que el sistema pueda funcionar correctamente.
+					</div>
+				</noscript>
+				<form action="." method="post" id="login-form">
+					<div>
+						<fieldset class="module aligned extrapretty">						
+						    {% for field in formulario %}
+						        {% if field.errors%}
+									<div class="form-row errors {{field.label}}">
+							            {{ field.errors }}
+							            {{ field.label_tag }}: {{ field }}									
+									</div>
+								{% else %}
+									<div class="form-row {{field.label}}">
+							            {{ field.label_tag }}: {{ field }}									
+									</div>							
+								{% endif%}
+						    {% endfor %}
+						</fieldset>
+						<div class="submit-row">
+							<input type="submit" value="Ingresar"/>
+						</div>
+					</div>
+				</form>	
+				<script type="text/javascript">
+					document.getElementById('id_cedula_identidad').focus()
+				</script>
+			</div>
+	        <br class="clear" />
+	    </div>
+	    <div id="footer"></div>
+	</div>
+</body>
+</html>
+
+

@@ -1,0 +1,76 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_modify adminmedia %}
+{% block extrahead %}{{ block.super }}
+{{ form.media }}
+{% endblock %}
+{% block extrastyle %}{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/forms.css" />
+{% endblock %}
+{% block coltype %}{% if ordered_objects %}colMS{% else %}colM{% endif %}{% endblock %}
+{% block bodyclass %}{{ opts.app_label }}-{{ opts.object_name.lower }} change-form{% endblock %}
+{% block breadcrumbs %}{% if not is_popup %}
+<div class="breadcrumbs">
+    <a href="/admin">{% trans "Home" %}</a>
+    &rsaquo; <a href="/admin/inventario/">inventario</a>
+    &rsaquo; <a href=".">Reiniciar Inventario</a>
+</div>
+{% endif %}{% endblock %}
+{% block content %}<h2>Reiniciar Inventario</h2>
+<div id="content-main">
+    {% block object-tools %}
+    {% if change %}{% if not is_popup %}
+    <ul class="object-tools">
+        <li>
+            <a href="history/" class="historylink">{% trans "History" %}</a>
+        </li>
+        {% if has_absolute_url %}
+        <li>
+            <a href="../../../r/{{ content_type_id }}/{{ object_id }}/" class="viewsitelink">{% trans "View on site" %}</a>
+        </li>{% endif%}
+    </ul>
+    {% endif %}{% endif %}
+    {% endblock %}
+    <form id="my_form" action="." method="POST">
+        <div>
+            <fieldset class="module aligned extrapretty">
+                <h2>Reiniciar Inventario</h2>
+                <div class="description">
+                   El siguiente formulario permite reiniciar el inventario de la bodega seleccionada para un valor &uacute;nico. 
+                    <br/>
+                    <br/>
+                </div>
+                <div class="form-row nombre marca  ">
+                    <div class="field-box">
+                        {{ form.bodega.errors }}
+                        <label class="required inline" for="id_proveedor">
+                            {{ form.bodega.label }}:
+                        </label>
+                        {{ form.bodega }}
+                        <p class="help">
+                            {{ form.bodega.help_text }}
+                        </p>
+                    </div>
+                </div>
+				                <div class="form-row nombre marca  ">
+                    <div class="field-box">
+                        {{ form.valor_reinicio.errors }}
+                        <label class="required inline" for="id_proveedor">
+                            {{ form.valor_reinicio.label }}:
+                        </label>
+                        {{ form.valor_reinicio }}
+                        <p class="help">
+                            {{ form.valor_reinicio.help_text }}
+                        </p>
+                    </div>
+
+                </div>
+                <div style="display:none">
+                    {{ form.tipo }}
+                </div>
+            </fieldset>
+            <div class="submit-row">
+                <input type="submit" name="_save" class="default" value="Reiniciar"/>
+            </div>
+        </div>
+    </form>
+</div>{% endblock %}

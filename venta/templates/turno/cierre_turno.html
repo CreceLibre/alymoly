@@ -1,0 +1,274 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-cl" xml:lang="es-cl" >
+<head>
+	<title>Cierre Turno | M&oacute;dulo de ventas</title>
+	<link rel="stylesheet" type="text/css" href="/media/static/css/venta/login.css" />
+	<link rel="stylesheet" type="text/css" href="/media/static/css/venta/layout.css" />
+	<link rel="stylesheet" type="text/css" href="/media/static/css/venta/global.css" />
+	<style>
+		.login .form-row label{
+			width:14em;
+		}
+		.login #container{
+			min-width:500px;
+		}
+		.login .submit-row{
+			padding:1em 0 0 15.4em
+		}
+		
+		#fecha-cierre-turno{
+		    line-height: 2em;
+		}
+	</style>
+	<meta name="robots" content="NONE,NOARCHIVE" />
+	{{formulario.media}}
+	{{formulario_deposito.media}}
+	<script type="text/javascript">
+		$(function($) {
+		  var options = {
+		     format: '%A, %d %B %Y %H:%M:%S'
+		  }
+		  $('#fecha-cierre-turno').jclock(options);
+		});
+	</script>	
+</head>
+<body class="login">
+	<div id="container">
+	    <div id="header">
+	        <div id="branding">
+	        	<h1 id="site-name">Cierre Turno | M&oacute;dulo de ventas {{ sucursal }}</h1>
+	        </div>
+	    </div>
+	    <div id="content" class="colM">
+	    	Hasta pronto <strong>{{turno.get_trabajador.get_nombre_completo}}</strong>, gracias por utilizar nuestro sistema de venta en Sucursal <strong>{{ sucursal }}</strong>
+	    	{% if formulario.errors or formulario_deposito.errors %}
+	    		<p class="errornote">
+	    			Favor corregir los campos err&oacute;neos.
+				</p>
+			{% endif %}
+			<ul class="errorlist">
+	            {% for error in formulario_deposito.non_field_errors %}
+	            <li>
+	                {{ error }}
+	            </li>
+				{% endfor %}
+	        </ul>
+			<div id="content-main">
+				<form action="." method="post" id="login-form">
+					<div>
+						<fieldset class="module aligned extrapretty">
+							<div class="form-row fecha-cierre-turno">
+					                <label for="id-fecha-cierre-turno">Fecha cierre turno</label> : <strong><span id="fecha-cierre-turno"></span></strong>				
+							</div>	
+						</fieldset>
+						<fieldset class="module aligned extrapretty">
+							<h2>Boleta de dep&oacute;sito</h2>
+							{% if formulario_deposito.veintemil.errors%}
+								<div class="form-row errors {{formulario_deposito.veintemil.label}}">
+						            {{ formulario_deposito.veintemil.errors }}
+						            {{ formulario_deposito.veintemil.label_tag }}: {{ formulario_deposito.veintemil }}
+									{% if formulario_deposito.veintemil.help_text %}
+										<p class="help">{{ formulario_deposito.veintemil.help_text}}</p>
+									{% endif %}																		
+								</div>
+							{% else %}
+								<div class="form-row {{formulario_deposito.veintemil.label}}">
+						            {{ formulario_deposito.veintemil.label_tag }}: {{ formulario_deposito.veintemil }}
+									{% if formulario_deposito.veintemil.help_text %}
+										<p class="help">{{ formulario_deposito.veintemil.help_text}}</p>
+									{% endif %}							
+								</div>							
+							{% endif%}
+							{% if formulario_deposito.diezmil.errors%}
+								<div class="form-row errors {{formulario_deposito.diezmil.label}}">
+						            {{ formulario_deposito.diezmil.errors }}
+						            {{ formulario_deposito.diezmil.label_tag }}: {{ formulario_deposito.diezmil }}
+									{% if formulario_deposito.diezmil.help_text %}
+										<p class="help">{{ formulario_deposito.diezmil.help_text}}</p>
+									{% endif %}																		
+								</div>
+							{% else %}
+								<div class="form-row {{formulario_deposito.diezmil.label}}">
+						            {{ formulario_deposito.diezmil.label_tag }}: {{ formulario_deposito.diezmil }}
+									{% if formulario_deposito.diezmil.help_text %}
+										<p class="help">{{ formulario_deposito.diezmil.help_text}}</p>
+									{% endif %}							
+								</div>							
+							{% endif%}
+							{% if formulario_deposito.cincomil.errors%}
+								<div class="form-row errors {{formulario_deposito.cincomil.label}}">
+						            {{ formulario_deposito.cincomil.errors }}
+						            {{ formulario_deposito.cincomil.label_tag }}: {{ formulario_deposito.cincomil }}
+									{% if formulario_deposito.cincomil.help_text %}
+										<p class="help">{{ formulario_deposito.cincomil.help_text}}</p>
+									{% endif %}																		
+								</div>
+							{% else %}
+								<div class="form-row {{formulario_deposito.cincomil.label}}">
+						            {{ formulario_deposito.cincomil.label_tag }}: {{ formulario_deposito.cincomil }}
+									{% if formulario_deposito.cincomil.help_text %}
+										<p class="help">{{ formulario_deposito.cincomil.help_text}}</p>
+									{% endif %}							
+								</div>							
+							{% endif%}
+							{% if formulario_deposito.dosmil.errors%}
+								<div class="form-row errors {{formulario_deposito.dosmil.label}}">
+						            {{ formulario_deposito.dosmil.errors }}
+						            {{ formulario_deposito.dosmil.label_tag }}: {{ formulario_deposito.dosmil }}
+									{% if formulario_deposito.dosmil.help_text %}
+										<p class="help">{{ formulario_deposito.dosmil.help_text}}</p>
+									{% endif %}																		
+								</div>
+							{% else %}
+								<div class="form-row {{formulario_deposito.dosmil.label}}">
+						            {{ formulario_deposito.dosmil.label_tag }}: {{ formulario_deposito.dosmil }}
+									{% if formulario_deposito.dosmil.help_text %}
+										<p class="help">{{ formulario_deposito.dosmil.help_text}}</p>
+									{% endif %}							
+								</div>							
+							{% endif%}																					
+							{% if formulario_deposito.mil.errors%}
+								<div class="form-row errors {{formulario_deposito.mil.label}}">
+						            {{ formulario_deposito.mil.errors }}
+						            {{ formulario_deposito.mil.label_tag }}: {{ formulario_deposito.mil }}
+									{% if formulario_deposito.mil.help_text %}
+										<p class="help">{{ formulario_deposito.mil.help_text}}</p>
+									{% endif %}																		
+								</div>
+							{% else %}
+								<div class="form-row {{formulario_deposito.mil.label}}">
+						            {{ formulario_deposito.mil.label_tag }}: {{ formulario_deposito.mil }}
+									{% if formulario_deposito.mil.help_text %}
+										<p class="help">{{ formulario_deposito.mil.help_text}}</p>
+									{% endif %}							
+								</div>							
+							{% endif%}														
+							{% if formulario_deposito.quinientos.errors%}
+								<div class="form-row errors {{formulario_deposito.quinientos.label}}">
+						            {{ formulario_deposito.quinientos.errors }}
+						            {{ formulario_deposito.quinientos.label_tag }}: {{ formulario_deposito.quinientos }}
+									{% if formulario_deposito.quinientos.help_text %}
+										<p class="help">{{ formulario_deposito.quinientos.help_text}}</p>
+									{% endif %}																		
+								</div>
+							{% else %}
+								<div class="form-row {{formulario_deposito.quinientos.label}}">
+						            {{ formulario_deposito.quinientos.label_tag }}: {{ formulario_deposito.quinientos }}
+									{% if formulario_deposito.quinientos.help_text %}
+										<p class="help">{{ formulario_deposito.quinientos.help_text}}</p>
+									{% endif %}							
+								</div>							
+							{% endif%}
+							{% if formulario_deposito.cien.errors%}
+								<div class="form-row errors {{formulario_deposito.cien.label}}">
+						            {{ formulario_deposito.cien.errors }}
+						            {{ formulario_deposito.cien.label_tag }}: {{ formulario_deposito.cien }}
+									{% if formulario_deposito.cien.help_text %}
+										<p class="help">{{ formulario_deposito.cien.help_text}}</p>
+									{% endif %}																		
+								</div>
+							{% else %}
+								<div class="form-row {{formulario_deposito.cien.label}}">
+						            {{ formulario_deposito.cien.label_tag }}: {{ formulario_deposito.cien }}
+									{% if formulario_deposito.cien.help_text %}
+										<p class="help">{{ formulario_deposito.cien.help_text}}</p>
+									{% endif %}							
+								</div>							
+							{% endif%}
+							{% if formulario_deposito.cincuenta.errors%}
+								<div class="form-row errors {{formulario_deposito.cincuenta.label}}">
+						            {{ formulario_deposito.cincuenta.errors }}
+						            {{ formulario_deposito.cincuenta.label_tag }}: {{ formulario_deposito.cincuenta }}
+									{% if formulario_deposito.cincuenta.help_text %}
+										<p class="help">{{ formulario_deposito.cincuenta.help_text}}</p>
+									{% endif %}																		
+								</div>
+							{% else %}
+								<div class="form-row {{formulario_deposito.cincuenta.label}}">
+						            {{ formulario_deposito.cincuenta.label_tag }}: {{ formulario_deposito.cincuenta }}
+									{% if formulario_deposito.cincuenta.help_text %}
+										<p class="help">{{ formulario_deposito.cincuenta.help_text}}</p>
+									{% endif %}							
+								</div>							
+							{% endif%}
+							{% if formulario_deposito.diez.errors%}
+								<div class="form-row errors {{formulario_deposito.diez.label}}">
+						            {{ formulario_deposito.diez.errors }}
+						            {{ formulario_deposito.diez.label_tag }}: {{ formulario_deposito.diez }}
+									{% if formulario_deposito.diez.help_text %}
+										<p class="help">{{ formulario_deposito.diez.help_text}}</p>
+									{% endif %}																		
+								</div>
+							{% else %}
+								<div class="form-row {{formulario_deposito.diez.label}}">
+						            {{ formulario_deposito.diez.label_tag }}: {{ formulario_deposito.diez }}
+									{% if formulario_deposito.diez.help_text %}
+										<p class="help">{{ formulario_deposito.diez.help_text}}</p>
+									{% endif %}							
+								</div>							
+							{% endif%}
+							{% if formulario_deposito.tarjetas.errors%}
+								<div class="form-row errors {{formulario_deposito.tarjetas.label}}">
+						            {{ formulario_deposito.tarjetas.errors }}
+						            {{ formulario_deposito.tarjetas.label_tag }}: {{ formulario_deposito.tarjetas }}
+									{% if formulario_deposito.tarjetas.help_text %}
+										<p class="help">{{ formulario_deposito.tarjetas.help_text}}</p>
+									{% endif %}																		
+								</div>
+							{% else %}
+								<div class="form-row {{formulario_deposito.tarjetas.label}}">
+						            {{ formulario_deposito.tarjetas.label_tag }}: {{ formulario_deposito.tarjetas }}
+									{% if formulario_deposito.tarjetas.help_text %}
+										<p class="help">{{ formulario_deposito.tarjetas.help_text}}</p>
+									{% endif %}							
+								</div>							
+							{% endif%}
+							{% if formulario_deposito.otros.errors%}
+								<div class="form-row errors {{formulario_deposito.otros.label}}">
+						            {{ formulario_deposito.otros.errors }}
+						            {{ formulario_deposito.otros.label_tag }}: {{ formulario_deposito.otros }}
+									{% if formulario_deposito.otros.help_text %}
+										<p class="help">{{ formulario_deposito.otros.help_text}}</p>
+									{% endif %}																		
+								</div>
+							{% else %}
+								<div class="form-row {{formulario_deposito.otros.label}}">
+						            {{ formulario_deposito.otros.label_tag }}: {{ formulario_deposito.otros }}
+									{% if formulario_deposito.otros.help_text %}
+										<p class="help">{{ formulario_deposito.otros.help_text}}</p>
+									{% endif %}							
+								</div>							
+							{% endif%}
+							{% if formulario_deposito.total.errors%}
+								<div class="form-row errors {{formulario_deposito.total.label}}">
+						            {{ formulario_deposito.total.errors }}
+						            {{ formulario_deposito.total.label_tag }}: {{ formulario_deposito.total }}
+									{% if formulario_deposito.total.help_text %}
+										<p class="help">{{ formulario_deposito.total.help_text}}</p>
+									{% endif %}																		
+								</div>
+							{% else %}
+								<div class="form-row {{formulario_deposito.total.label}}">
+						            {{ formulario_deposito.total.label_tag }}: {{ formulario_deposito.total }}
+									{% if formulario_deposito.total.help_text %}
+										<p class="help">{{ formulario_deposito.total.help_text}}</p>
+									{% endif %}							
+								</div>							
+							{% endif%}
+						</fieldset>
+						<div class="submit-row">
+							<input id='id_cerrar' type="submit" value="Cerrar turno" onclick="return confirm('Est&aacute; seguro que desea cerrar su turno?')"/>
+						</div>
+					</div>
+				</form>	
+				<script type="text/javascript">
+					document.getElementById('id_veintemil').focus()
+				</script>
+			</div>
+	        <br class="clear" />
+	    </div>
+	    <div id="footer"></div>
+	</div>
+</body>
+</html>

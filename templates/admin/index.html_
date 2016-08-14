@@ -1,0 +1,285 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+{% block extrastyle %}{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% load adminmedia %}{% admin_media_prefix %}css/dashboard.css" />
+{% endblock %}
+{% block coltype %}colMS{% endblock %}
+{% block bodyclass %}dashboard{% endblock %}
+{% block breadcrumbs %}{% endblock %}
+{% block content %}
+<div id="content-main">
+    <div class="module">
+        <table>
+            <caption>
+                <a href="/admin/mantenedor/" class="section">Mantenedor</a>
+            </caption>
+            <tr>
+                <th scope="row">
+                    <a href="/admin/mantenedor/bodega/">Bodegas</a>
+                </th>
+                <td>
+                    <a class="addlink" href="/admin/mantenedor/bodega/add/">A&#241;adir</a>
+                </td>
+                <td>
+                    <a class="changelink" href="/admin/mantenedor/bodega/">Modificar</a>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <a href="/admin/mantenedor/categoria/">Categor&iacute;as</a>
+                </th>
+                <td>
+                    <a class="addlink" href="/admin/mantenedor/categoria/add/">A&#241;adir</a>
+                </td>
+                <td>
+                    <a class="changelink" href="/admin/mantenedor/categoria/">Modificar</a>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <a href="/admin/mantenedor/producto/">Productos</a>
+                </th>
+                <td>
+                    <a class="addlink" href="/admin/mantenedor/producto/add/">A&#241;adir</a>
+                </td>
+                <td>
+                    <a class="changelink" href="/admin/mantenedor/producto/">Modificar</a>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <a href="{% url producto_compuesto %}">Productos Compuestos</a>
+                </th>
+                <td>
+                    <a class="addlink" href="/admin/producto_compuesto/add/">A&#241;adir</a>
+                </td>
+                <td>
+                    <a class="changelink" href="/admin/producto_compuesto/">Modificar</a>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <a href="/admin/mantenedor/promocion/">Promociones</a>
+                </th>
+                <td>
+                    <a class="addlink" href="/admin/mantenedor/promocion/add/">A&#241;adir</a>
+                </td>
+                <td>
+                    <a class="changelink" href="/admin/mantenedor/promocion/">Modificar</a>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <a href="/admin/mantenedor/proveedor/">Proveedores</a>
+                </th>
+                <td>
+                    <a class="addlink" href="/admin/mantenedor/proveedor/add/">A&#241;adir</a>
+                </td>
+                <td>
+                    <a class="changelink" href="/admin/mantenedor/proveedor/">Modificar</a>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <a href="/admin/mantenedor/trabajador/">Trabajadores</a>
+                </th>
+                <td>
+                    <a class="addlink" href="/admin/mantenedor/trabajador/add/">A&#241;adir</a>
+                </td>
+                <td>
+                    <a class="changelink" href="/admin/mantenedor/trabajador/">Modificar</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="module">
+        <table>
+            <caption>
+                <a href="/admin/movimiento/" class="section">Movimiento</a>
+            </caption>
+            <tr>
+                <th scope="row">
+                    <a href="/admin/movimiento/egreso">Egresos de mercader&iacute;as</a>
+                </th>
+                <td>
+                    <a class="addlink" href="/admin/movimiento/egreso/add/">A&#241;adir</a>
+                </td>
+                <td>
+                    <a class="changelink" href="/admin/movimiento/egreso/">Modificar</a>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <a href="/admin/movimiento/ingreso">Ingresos de mercader&iacute;as</a>
+                </th>
+                <td>
+                    <a class="addlink" href="/admin/movimiento/ingreso/add/">A&#241;adir</a>
+                </td>
+                <td>
+                    <a class="changelink" href="/admin/movimiento/ingreso/">Modificar</a>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <a href="/admin/movimiento/traspaso">Traspasos de mercader&iacute;as</a>
+                </th>
+                <td>
+                    <a class="addlink" href="/admin/movimiento/traspaso/add/">A&#241;adir</a>
+                </td>
+                <td>
+                    <a class="changelink" href="/admin/movimiento/traspaso/">Modificar</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="module">
+        <table>
+            <caption>
+                <a href="{% url inventario:index %}" class="section">Inventario</a>
+            </caption>
+            <tr>
+                <th scope="row">
+                    <a href="{% url inventario:actual %}">Inventario actual</a>
+                </th>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <a href="{% url inventario:reiniciar %}">Reiniciar Inventario</a>
+                </th>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <a href="{% url inventario:criticos %}">Stock Cr&iacute;tico</a>
+                </th>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="module">
+        <table>
+            <caption>
+                <a href="{% url reporte:index %}" class="section">Reportes</a>
+            </caption>
+            <tr>
+                <th scope="row">
+                    <a href="{% url reporte:productos %}">Productos</a>
+                </th>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <a href="{% url reporte:existencias %}">Existencias por categor&iacute;a</a>
+                </th>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <a href="{% url reporte:ventas %}">Venta de productos por turno</a>
+                </th>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <a href="{% url reporte:ventas_mes %}">Ventas por mes</a>
+                </th>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <a href="{% url reporte:ventas_mes_resumen %}">Resumen ventas por mes</a>
+                </th>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>			
+            <tr>
+                <th scope="row">
+                    <a href="{% url reporte:ventas_graficos_periodo %}">Gr&aacute;fico de venta por per&iacute;odo</a>
+                </th>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <a href="{% url reporte:ventas_graficos_periodo_categoria %}">Gr&aacute;fico de venta por categor&iacute;a por per&iacute;odo</a>
+                </th>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+{% endblock %}
+{% block sidebar %}
+<div id="content-related">
+    <div class="module" id="recent-actions-module">
+        <h2>{% trans 'Recent Actions' %}</h2>
+        <h3>{% trans 'My Actions' %}</h3>
+        {% load log %}
+        {% get_admin_log 10 as admin_log for_user user %}
+        {% if not admin_log %}
+        <p>
+            {% trans 'None available' %}
+        </p>
+        {% else %}
+        <ul class="actionlist">
+            {% for entry in admin_log %}
+            <li class="{% if entry.is_addition %}addlink{% endif %}{% if entry.is_change %}changelink{% endif %}{% if entry.is_deletion %}deletelink{% endif %}">
+                {% if not entry.is_deletion %}<a href="{{ entry.get_admin_url }}">{% endif %}{{ entry.object_repr }}{% if not entry.is_deletion %}</a>{% endif %}
+                <br/>
+                <span class="mini quiet">{% filter capfirst %}{% trans entry.content_type.name %}{% endfilter %}</span>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

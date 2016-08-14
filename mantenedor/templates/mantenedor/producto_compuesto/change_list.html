@@ -1,0 +1,95 @@
+{% extends "admin/base_site.html" %}
+{% load adminmedia admin_list i18n %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/changelists.css" />
+  {% if cl.formset %}
+    <link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/forms.css" />
+    <script type="text/javascript" src="../../jsi18n/"></script>
+  {% endif %}
+  {{ media }}
+  {% if not actions_on_top and not actions_on_bottom %}
+    <style>
+      #changelist table thead th:first-child {width: inherit}
+    </style>
+  {% endif %}
+{% endblock %}
+
+{% if not is_popup %}{% block breadcrumbs %}
+<div class="breadcrumbs">
+    <a href="/admin">{% trans "Home" %}</a>
+    &rsaquo; <a href="/admin/mantenedor/">Mantenedor</a>
+    &rsaquo; Producto Compuesto
+</div>{% endblock %}{% endif %}
+{% block coltype %}flex{% endblock %}
+{% block content %}
+<h1>Escoja el producto compuesto a modificar</h1>
+<div id="content-main">
+
+    <ul class="object-tools">
+        <li>
+            <a href="add/" class="addlink">A&#241;adir Producto Compuesto</a>
+        </li>
+    </ul>
+	<div id="changelist" class="module">
+    {% if results %}
+    <table cellspacing="0">
+        <thead>
+            <tr class="{% cycle 'row1' 'row2' %}">
+                <th>
+                    <a href="#">C&oacute;digo de barra</a>
+                </th>
+                <th>
+                    <a href="#">Nombre</a>
+                </th>
+                <th>
+                    <a href="#">Marca</a>
+                </th>
+                <th>
+                    <a href="#">Categor&iacute;a</a>
+                </th>
+                <th>
+                    <a href="#">Tipo de envase</a>
+                </th>
+                <th>
+                    <a href="#">Cantidad</a>
+                </th>
+                <th>
+                    <a href="#">Capacidad</a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in results %}
+            <tr class="{% cycle 'row1' 'row2' %}">
+                <th>
+                    <a href="{{result.id}}">{{ result.compone.codigo_barra }}</a>
+                </th>
+                <td>
+                    {{ result.compone.nombre }}
+                </td>
+                <td>
+                    {{ result.compone.marca }}
+                </td>
+                <td>
+                    {{ result.compone.categoria }}
+                </td>
+                <td>
+                    {{ result.compone.tipo_envase }}
+                </td>
+                <td>
+                    {{ result.cantidad_compone }}
+                </td>
+                <td>
+                    {{ result.capacidad }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+	</div>
+    {% endif %}
+</div>
+</div>
+{% endblock %}
