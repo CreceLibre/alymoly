@@ -1,7 +1,5 @@
 #-*- encoding: UTF-8 -*-
-from django.apps import AppConfig
-
-get_model = AppConfig.get_model
+from django.apps import apps
 
 def ingreso_mercaderia(sender,**kwargs):
     """Realiza el ingreso de mercadería. El proceso
@@ -12,8 +10,8 @@ def ingreso_mercaderia(sender,**kwargs):
         registro = ingreso.existencia
         bodega = ingreso.existencia.bodega
         producto_padre = ingreso.existencia.producto
-        Producto = get_model('mantenedor','Producto')
-        ProductoBodega = get_model('movimiento','ProductoBodega')
+        Producto = apps.get_model('mantenedor','Producto')
+        ProductoBodega = apps.get_model('movimiento','ProductoBodega')
         producto_hijo = None
         cantidad = None
         try:#caso producto compuesto
@@ -42,8 +40,8 @@ def egreso_mercaderia(sender,**kwargs):
         registro = egreso.existencia
         bodega = egreso.existencia.bodega
         producto_padre = egreso.existencia.producto
-        Producto = get_model('mantenedor','Producto')
-        ProductoBodega = get_model('movimiento','ProductoBodega')
+        Producto = apps.get_model('mantenedor','Producto')
+        ProductoBodega = apps.get_model('movimiento','ProductoBodega')
         producto_hijo = None
         cantidad = None
         try:#caso producto compuesto
@@ -62,7 +60,7 @@ def traspaso_mercaderia(sender,**kwargs):
     traspaso = kwargs['instance']
     if not traspaso.id:
         producto_padre = traspaso.producto
-        Producto = get_model('mantenedor','Producto')
+        Producto = apps.get_model('mantenedor','Producto')
         producto_hijo = None
         cantidad = None
         try:#caso producto compuesto
@@ -73,7 +71,7 @@ def traspaso_mercaderia(sender,**kwargs):
             cantidad = traspaso.cantidad
             producto = producto_padre
 
-        ProductoBodega = get_model('movimiento','ProductoBodega')
+        ProductoBodega = apps.get_model('movimiento','ProductoBodega')
         producto_origen = ProductoBodega.objects.get(
                                                        bodega=traspaso.origen,
                                                        producto=producto)

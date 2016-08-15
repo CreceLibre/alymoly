@@ -1,7 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 from admin_tools.dashboard.models import Dashboard, LinkListDashboardModule, \
-                                            AppListDashboardModule, RecentActionsDashboardModule, \
+                                            AppListDashboardModule, \
                                             AppIndexDashboard, ModelListDashboardModule, DashboardModule
 
 # to activate your index dashboard add the following to your settings.py:
@@ -11,7 +11,7 @@ from admin_tools.dashboard.models import Dashboard, LinkListDashboardModule, \
 class CustomIndexDashboard(Dashboard):
     """
     Custom index dashboard for Central.
-    """ 
+    """
     def __init__(self, **kwargs):
         Dashboard.__init__(self, **kwargs)
 
@@ -71,11 +71,11 @@ class CustomIndexDashboard(Dashboard):
         #))
 
         # append a recent actions module
-        self.children.append(RecentActionsDashboardModule(
-            draggable=False,
-            title=_('Recent Actions'),
-            limit=5
-        ))
+        # self.children.append(RecentActionsDashboardModule(
+        #     draggable=False,
+        #     title=_('Recent Actions'),
+        #     limit=5
+        # ))
 
         # append a feed module
 #        self.children.append(FeedDashboardModule(
@@ -84,7 +84,7 @@ class CustomIndexDashboard(Dashboard):
 #            limit=5
 #        ))
 
-        # append another link list module for "support". 
+        # append another link list module for "support".
         self.children.append(LinkListDashboardModule(
             draggable=False,
             title=_('Support'),
@@ -118,7 +118,7 @@ class CustomIndexDashboard(Dashboard):
 class CustomAppIndexDashboard(AppIndexDashboard):
     """
     Custom app index dashboard for Central.
-    """ 
+    """
     def __init__(self, *args, **kwargs):
         AppIndexDashboard.__init__(self, *args, **kwargs)
 
@@ -132,10 +132,10 @@ class CustomAppIndexDashboard(AppIndexDashboard):
         ))
 
         # append a recent actions module
-        self.children.append(RecentActionsDashboardModule(
-            title=_('Recent Actions'),
-            include_list=self.get_app_content_types(),
-        ))
+        # self.children.append(RecentActionsDashboardModule(
+        #     title=_('Recent Actions'),
+        #     include_list=self.get_app_content_types(),
+        # ))
 
     def init_with_context(self, context):
         """

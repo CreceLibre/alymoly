@@ -1,8 +1,6 @@
 #-*- encoding: UTF-8 -*-
-from django.apps import AppConfig
+from django.apps import apps
 from django.db import transaction
-
-get_model = AppConfig.get_model
 
 def normalizar_campos(sender,**kwargs):
     "Normaliza campos de modelos con minúsculas cerradas"
@@ -57,8 +55,8 @@ def iniciar_nuevo_inventario(sender,**kwargs):
     """Realiza un inventario con stock 0 para una nueva Bodega"""
     bodega = kwargs['instance']
     if bodega.productos.count() == 0:
-        ProductoBodega = get_model('movimiento','ProductoBodega')
-        Producto = get_model('mantenedor','Producto')
+        ProductoBodega = apps.get_model('movimiento','ProductoBodega')
+        Producto = apps.get_model('mantenedor','Producto')
         productos = Producto.objects.all()
         for producto in productos:
             existencia = ProductoBodega(producto=producto,bodega=bodega, existencia=0)
@@ -69,8 +67,8 @@ def nuevo_producto_inventario(sender,**kwargs):
     """cuando se agrega un producto nuevo, se verifica si existe
      en los inventarios existentes, si no exite, se crea."""
     producto = kwargs['instance']
-    Bodega = get_model('mantenedor','Bodega')
-    ProductoBodega = get_model('movimiento','ProductoBodega')
+    Bodega = apps.get_model('mantenedor','Bodega')
+    ProductoBodega = apps.get_model('movimiento','ProductoBodega')
     for bodega in Bodega.objects.all():
         if not bodega.productos.all().filter(id=producto.id):
             existencia = ProductoBodega(producto=producto,bodega=bodega, existencia=0)
