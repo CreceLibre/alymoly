@@ -101,7 +101,7 @@ class VentasForm(TipoVentaForm):
         self.fields['fecha_fin'].initial = datetime.date.today().strftime('%d/%m/%Y')
 
     class Media:
-        js = ('/media/static/js/jquery.js',
+        js = ('/media/js/jquery.js',
               '/media/static/js/jquery-ui-datepicker.min.js',
               '/media/static/js/reporte/ventas/seleccion_fecha.js',
               )
@@ -139,7 +139,7 @@ class VentasDiariasForm(TipoVentaForm):
         self.fields['fecha'].initial = datetime.date.today().strftime('%d/%m/%Y')
 
     class Media:
-        js = ('/media/static/js/jquery.js',
+        js = ('/media/js/jquery.js',
               '/media/static/js/jquery-ui-datepicker.min.js',
               '/media/static/js/seleccion_fecha.js',
               )
@@ -162,7 +162,7 @@ class VentasPorTurnoForm(VentasForm):
         self.fields['formato'].required = False
 
     class Media:
-        js = ('/media/static/js/jquery.js',
+        js = ('/media/js/jquery.js',
               '/media/static/js/reporte/forms/ventas_por_turno.js',
               )
 
@@ -258,7 +258,7 @@ class VentasGraficosForm(ReporteForm):
         self.fields['fecha_fin'].initial = datetime.date.today().strftime('%d/%m/%Y')
 
     class Media:
-        js = ('/media/static/js/jquery.js',
+        js = ('/media/js/jquery.js',
               '/media/static/js/jquery-ui-datepicker.min.js',
               '/media/static/js/reporte/ventas/seleccion_fecha.js',
               )
@@ -326,7 +326,7 @@ class VentasGraficosPorCategoriaForm(ReporteForm):
         self.fields['categoria'].choices =[(0,'TODAS')] + [(x.id,x.__unicode__()) for x in Categoria.objects.all()]
 
     class Media:
-        js = ('/media/static/js/jquery.js',
+        js = ('/media/js/jquery.js',
               '/media/static/js/jquery-ui-datepicker.min.js',
               '/media/static/js/reporte/ventas/seleccion_fecha.js',
               )

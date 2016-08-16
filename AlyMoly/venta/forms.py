@@ -31,7 +31,7 @@ class TurnoForm(forms.ModelForm):
 
     class Media:
         js = (
-            '/media/static/js/jquery.js',
+            '/media/js/jquery.js',
             "/media/static/js/utils/sucursal/sucursal.js",
             '/media/static/js/jquery.jclock.js',
         )
@@ -52,7 +52,7 @@ class CerrarTurnoForm(forms.ModelForm):
 
     class Media:
         js = (
-            '/media/static/js/jquery.js',
+            '/media/js/jquery.js',
             '/media/static/js/venta/cerrar_turno.js',
             '/media/static/js/utils/sucursal/sucursal.js',
             '/media/static/js/jquery.jclock.js',

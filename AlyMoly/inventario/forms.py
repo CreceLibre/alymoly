@@ -8,8 +8,8 @@ class JQueryBaseForm(forms.Form):
     'Formulario base que añade los script de jquery'
 
     class Media:
-        js = ('/media/static/js/jquery.js',
-              '/media/static/js/jquery.capitalize.min.js',
+        js = ('/media/js/jquery.js',
+              '/media/js/jquery.capitalize.min.js',
               '/media/static/js/jquery.blockUI.js',
               '/media/static/js/jquery.alphanumeric.pack.js',
               '/media/static/js/jquery-ui-highlight.min.js',

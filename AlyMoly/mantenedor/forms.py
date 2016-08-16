@@ -11,11 +11,12 @@
 ###############################################
 from django import forms
 from AlyMoly.mantenedor.models import Producto, Bodega, Categoria, Promocion, Proveedor, Trabajador
-# from django.forms.util import ErrorList
+from django.forms.utils import ErrorList
 # from django.contrib.localflavor.cl.forms import CLRutField
 from localflavor.cl.forms import CLRutField
 from django.core.exceptions import ObjectDoesNotExist
 from AlyMoly.utils import widgets
+
 
 class ProductoForm(forms.ModelForm):
     # atributo virtual ;)
@@ -41,7 +42,7 @@ class ProductoForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ProductoForm, self).__init__(*args, **kwargs)
         try:
-            if kwargs['instance'].es_compuesto:
+            if kwargs['instance'] and kwargs['instance'].es_compuesto:
                 p = Producto.objects.get(compone=kwargs['instance'].id)
                 self.initial['compuesto_por'] = p.codigo_barra
                 self.initial['cantidad_compuesto'] = p.cantidad_compone
@@ -143,9 +144,9 @@ class ProductoForm(forms.ModelForm):
     class Media:
         # Se carga la magia necesaria para recargar las subcategorías vía ajax
         js = (
-            '/media/static/js/jquery.js',
-            '/media/static/js/jquery.capitalize.min.js',
-            '/media/static/js/mantenedor/producto/categorias.js',
+            '/media/js/jquery.js',
+            '/media/js/jquery.capitalize.min.js',
+            '/media/js/producto/categorias.js',
         )
 
 
@@ -247,8 +248,8 @@ class PromocionForm(forms.ModelForm):
     class Media:
         # Se carga la magia necesaria para recargar las subcategorías vía ajax
         js = (
-            '/media/static/js/jquery.js',
-            '/media/static/js/mantenedor/promocion/producto_promocion.js',
+            '/media/js/jquery.js',
+            '/media/js/promocion/producto_promocion.js',
         )
 
 
@@ -307,10 +308,11 @@ class TrabajadorForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(TrabajadorForm, self).__init__(*args, **kwargs)
         try:
-            self.initial['cedula_identidad'] = unicode(
-                kwargs['instance'].cedula_identidad) + kwargs['instance'].digito_verificador
-            self.initial['estado'] = kwargs['instance'].user.is_active
-            self.fields['cedula_identidad'].widget.attrs['readonly'] = True
+            if kwargs['instance']:
+                self.initial['cedula_identidad'] = unicode(
+                    kwargs['instance'].cedula_identidad) + kwargs['instance'].digito_verificador
+                self.initial['estado'] = kwargs['instance'].user.is_active
+                self.fields['cedula_identidad'].widget.attrs['readonly'] = True
         except KeyError:
             # No existe la instancia en un formulario de no-edición
             pass
