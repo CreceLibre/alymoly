@@ -164,6 +164,6 @@ class BoletaDepositoForm(forms.ModelForm):
     class Media:
         js = (
             '/media/static/js/jquery.form.js',
-            '/media/static/js/jquery.alphanumeric.pack.js',
-            '/media/static/js/jquery-ui-highlight.min.js'
+            '/media/js/jquery.alphanumeric.pack.js',
+            '/media/js/jquery-ui-highlight.min.js'
         )

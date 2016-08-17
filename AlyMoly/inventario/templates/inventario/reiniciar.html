@@ -1,10 +1,11 @@
 {% extends "admin/base_site.html" %}
-{% load i18n admin_modify adminmedia %}
+{% load i18n admin_modify admin_static %}
+{% load admin_urls %}
 {% block extrahead %}{{ block.super }}
 {{ form.media }}
 {% endblock %}
 {% block extrastyle %}{{ block.super }}
-<link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/forms.css" />
+<link rel="stylesheet" type="text/css" href="{{ ADMIN_MEDIA_PREFIX }}css/forms.css" />
 {% endblock %}
 {% block coltype %}{% if ordered_objects %}colMS{% else %}colM{% endif %}{% endblock %}
 {% block bodyclass %}{{ opts.app_label }}-{{ opts.object_name.lower }} change-form{% endblock %}
@@ -35,7 +36,7 @@
             <fieldset class="module aligned extrapretty">
                 <h2>Reiniciar Inventario</h2>
                 <div class="description">
-                   El siguiente formulario permite reiniciar el inventario de la bodega seleccionada para un valor &uacute;nico. 
+                   El siguiente formulario permite reiniciar el inventario de la bodega seleccionada para un valor &uacute;nico.
                     <br/>
                     <br/>
                 </div>

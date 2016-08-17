@@ -1,11 +1,12 @@
 {% extends "admin/base_site.html" %}
-{% load i18n admin_modify adminmedia %}
+{% load i18n admin_modify admin_static %}
+{% load admin_urls %}
 {% block extrahead %}{{ block.super }}
 {{ form.media }}
 {{ buscar_form.media }}
 {% endblock %}
 {% block extrastyle %}{{ block.super }}
-<link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/forms.css" />
+<link rel="stylesheet" type="text/css" href="{{ ADMIN_MEDIA_PREFIX }}css/forms.css" />
 {% endblock %}
 {% block coltype %}{% if ordered_objects %}colMS{% else %}colM{% endif %}{% endblock %}
 {% block bodyclass %}{{ opts.app_label }}-{{ opts.object_name.lower }} change-form{% endblock %}
@@ -36,7 +37,7 @@
             <h2>Inventario Actual</h2>
             <div class="description">
                 En este proceso, se muestra el stock actual de productos para una <strong>bodega</strong>
-                seleccionada. Es posible tambi&eacute;n, establecer un valor arbitrario de existencia para un producto dado. Si se desea 
+                seleccionada. Es posible tambi&eacute;n, establecer un valor arbitrario de existencia para un producto dado. Si se desea
 				establecer un valor de existencia, debe estar seguro de que el valor que ingresar&aacute; es el valor correcto.
                 <br/>
                 <br/>

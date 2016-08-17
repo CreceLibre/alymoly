@@ -10,9 +10,9 @@ class JQueryBaseForm(forms.Form):
     class Media:
         js = ('/media/js/jquery.js',
               '/media/js/jquery.capitalize.min.js',
-              '/media/static/js/jquery.blockUI.js',
-              '/media/static/js/jquery.alphanumeric.pack.js',
-              '/media/static/js/jquery-ui-highlight.min.js',
+              '/media/js/jquery.blockUI.js',
+              '/media/js/jquery.alphanumeric.pack.js',
+              '/media/js/jquery-ui-highlight.min.js',
               )
 
 class BodegaBaseForm(JQueryBaseForm):
@@ -35,19 +35,19 @@ class BuscarExistenciaForm(JQueryBaseForm):
 
     class Media:
         js = (
-              '/media/static/js/inventario/buscar/buscar.js',
+              '/media/js/buscar/buscar.js',
               )
 
 class StockCriticoForm(BodegaBaseForm):
     class Media:
         js = (
-              '/media/static/js/inventario/critico/cargar.js',
+              '/media/js/critico/cargar.js',
               )
 
 class InventarioActualForm(BodegaBaseForm):
     class Media:
         js = (
-              '/media/static/js/inventario/actual/cargar.js',
+              '/media/js/actual/cargar.js',
               )
 
 class ActualizarExistenciaForm(forms.Form):
@@ -76,5 +76,5 @@ class ReiniciarInventarioForm(BodegaBaseForm):
 
     class Media:
         js = (
-              '/media/static/js/inventario/actual/reiniciar.js',
+              '/media/js/actual/reiniciar.js',
               )
