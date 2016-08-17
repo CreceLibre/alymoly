@@ -8,7 +8,7 @@ class NombreProductoWidget(forms.TextInput):
     class Media:
         js = ( '/media/js/jquery.js',
             '/media/js/jquery.capitalize.min.js',
-            '/media/static/js/utils/widgets/nombre_producto/descripcion.js',)
+            '/media/js/widgets/nombre_producto/descripcion.js',)
 
 class NombreProductoSearchWidget(forms.TextInput):
     def __init__(self):

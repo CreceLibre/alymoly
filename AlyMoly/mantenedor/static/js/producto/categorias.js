@@ -1,15 +1,15 @@
 /**
 # # # # # # # # # # # # # # # # # # # # # # # #
 # Todos los derechos reservados a:            #
-# CreceLibre Consultores en Tecnolog�as Ltda. #
+# CreceLibre Consultores en Tecnologías Ltda. #
 #                                             #
-# �Andr�s Ot�rola Alvarado                    #
+# Andrés Otárola Alvarado                     #
 # aotarola@crecelibre.cl                      #
 # 2009                                        #
 # # # # # # # # # # # # # # # # # # # # # # # #
 
- El siguiente script recarga el combobox de subcategor�a, dependiendo
- de la categor�a seleccionada
+ El siguiente script recarga el combobox de subcategoría, dependiendo
+ de la categoría seleccionada
  * */
 
 $(document).ready(function() {

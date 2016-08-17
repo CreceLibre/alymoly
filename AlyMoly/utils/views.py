@@ -7,7 +7,7 @@ from AlyMoly.utils.decorators import remote_method_only
 import json
 from AlyMoly.settings import SUCURSAL_NOMBRE
 from django.forms.models import model_to_dict
-
+from django.http import JsonResponse
 
 @staff_member_required
 @remote_method_only('GET')
@@ -23,9 +23,9 @@ def descripcion_producto(request):
             child_desc = "%s, %s unidad(es)." % (child.__unicode__() , child.cantidad_compone)
         except Producto.DoesNotExist:
             pass
-        return HttpResponse(json.dumps((parent_desc, child_desc)), mimetype="application/json")
+        return JsonResponse((parent_desc, child_desc), safe=False)
     else:
-        return HttpResponseBadRequest(json.dumps(form._errors),mimetype="application/json")
+        return  JsonResponse(form._errors, status=400)
 
 @staff_member_required
 def detalle_producto(request,id):

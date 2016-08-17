@@ -114,7 +114,8 @@ class TraspasoForm(forms.ModelForm):
     def __init__(self,*args,**kwargs):
         super(TraspasoForm,self).__init__(*args,**kwargs)
         try:
-            self.initial['producto'] = unicode(kwargs['instance'].producto.codigo_barra)
+            if kwargs['instance']:
+                self.initial['producto'] = unicode(kwargs['instance'].producto.codigo_barra)
         except KeyError:
             #No existe la instancia en un formulario de no-edición
             pass
