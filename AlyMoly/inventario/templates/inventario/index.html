@@ -1,7 +1,7 @@
 {% extends "admin/base_site.html" %}
 {% load i18n %}
 
-{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% load adminmedia %}{% admin_media_prefix %}css/dashboard.css" />{% endblock %}
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="/media/admin_tools/css/dashboard.css" />{% endblock %}
 
 {% block coltype %}colMS{% endblock %}
 
@@ -16,11 +16,11 @@
       <div class="module">
         <table>
             <caption>
-                <a href="{% url inventario:index %}" class="section">Inventario</a>
+                <a href="{% url 'inventario:index' %}" class="section">Inventario</a>
             </caption>
             <tr>
                 <th scope="row">
-                    <a href="{% url inventario:actual %}">Inventario actual</a>
+                    <a href="{% url 'inventario:actual' %}">Inventario actual</a>
                 </th>
                 <td>
                     &nbsp;
@@ -31,7 +31,7 @@
             </tr>
             <tr>
                 <th scope="row">
-                    <a href="{% url inventario:reiniciar %}">Reiniciar Inventario</a>
+                    <a href="{% url 'inventario:reiniciar' %}">Reiniciar Inventario</a>
                 </th>
                 <td>
                     &nbsp;
@@ -42,7 +42,7 @@
             </tr>
             <tr>
                 <th scope="row">
-                    <a href="{% url inventario:criticos %}">Stock Cr&iacute;tico</a>
+                    <a href="{% url 'inventario:criticos' %}">Stock Cr&iacute;tico</a>
                 </th>
                 <td>
                     &nbsp;
