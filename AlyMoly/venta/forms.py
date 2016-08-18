@@ -33,7 +33,7 @@ class TurnoForm(forms.ModelForm):
         js = (
             '/media/js/jquery.js',
             "/media/js/sucursal/sucursal.js",
-            '/media/static/js/jquery.jclock.js',
+            '/media/js/jquery.jclock.js',
         )
 
 
@@ -53,9 +53,9 @@ class CerrarTurnoForm(forms.ModelForm):
     class Media:
         js = (
             '/media/js/jquery.js',
-            '/media/static/js/venta/cerrar_turno.js',
+            '/media/js/venta/cerrar_turno.js',
             '/media/js/sucursal/sucursal.js',
-            '/media/static/js/jquery.jclock.js',
+            '/media/js/jquery.jclock.js',
         )
 
 class BoletaDepositoForm(forms.ModelForm):
@@ -163,7 +163,7 @@ class BoletaDepositoForm(forms.ModelForm):
 
     class Media:
         js = (
-            '/media/static/js/jquery.form.js',
+            '/media/js/jquery.form.js',
             '/media/js/jquery.alphanumeric.pack.js',
             '/media/js/jquery-ui-highlight.min.js'
         )

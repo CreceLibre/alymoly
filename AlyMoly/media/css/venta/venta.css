@@ -1,9 +1,9 @@
 /**
 # # # # # # # # # # # # # # # # # # # # # # # #
 # Todos los derechos reservados a:            #
-# CreceLibre Consultores en Tecnolog’as Ltda. #
+# CreceLibre Consultores en Tecnologï¿½as Ltda. #
 #                                             #
-# ©Milton Inostroza Aguilera                  #
+# ï¿½Milton Inostroza Aguilera                  #
 # minostro@crecelibre.cl                      #
 # 2009                                        #
 # # # # # # # # # # # # # # # # # # # # # # # #
@@ -19,7 +19,7 @@
 }
 
 #a-ayuda{
-	background: transparent url(/media/static/images/info16.png) no-repeat scroll 0 0;	
+	background: transparent url(/media/img/info16.png) no-repeat scroll 0 0;	
 }
 
 .a-eliminar{
@@ -58,15 +58,15 @@
 }
 
 #a-devolucion{
-	background: transparent url(/media/static/images/devolucion.png) no-repeat scroll 0 0;
+	background: transparent url(/media/img/devolucion.png) no-repeat scroll 0 0;
 }
 
 #a-cancelar-venta{
-	background: transparent url(/media/static/images/cancelar.png) no-repeat scroll 0 0;
+	background: transparent url(/media/img/cancelar.png) no-repeat scroll 0 0;
 }
 
 #a-cerrar-turno{
-	background: transparent url(/media/static/images/cerrar.png) no-repeat scroll 0 0;
+	background: transparent url(/media/img/cerrar.png) no-repeat scroll 0 0;
 }
 
 /*Para nombre de promociones o productos compuestos demasiado largos*/

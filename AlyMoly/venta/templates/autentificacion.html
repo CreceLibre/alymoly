@@ -5,7 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="/media/css/venta/login.css" />
 	<link rel="stylesheet" type="text/css" href="/media/css/venta/layout.css" />
 	<link rel="stylesheet" type="text/css" href="/media/css/venta/global.css" />
-	<style>	
+	<style>
 		.login .submit-row{
 			padding:1em 0 0 12.4em
 		}
@@ -15,7 +15,7 @@
 	</style>
 	<meta name="robots" content="NONE,NOARCHIVE" />
 	{{formulario.media}}
-	<script type="text/javascript" src="/media/js/sucursal/sucursal.js"></script>	
+	<script type="text/javascript" src="/media/js/sucursal/sucursal.js"></script>
 </head>
 <body class="login">
 	<div id="container">
@@ -46,17 +46,17 @@
 				</noscript>
 				<form action="." method="post" id="login-form">
 					<div>
-						<fieldset class="module aligned extrapretty">						
+						<fieldset class="module aligned extrapretty">
 						    {% for field in formulario %}
 						        {% if field.errors%}
 									<div class="form-row errors {{field.label}}">
 							            {{ field.errors }}
-							            {{ field.label_tag }}: {{ field }}									
+							            {{ field.label_tag }}: {{ field }}
 									</div>
 								{% else %}
 									<div class="form-row {{field.label}}">
-							            {{ field.label_tag }}: {{ field }}									
-									</div>							
+							            {{ field.label_tag }}: {{ field }}
+									</div>
 								{% endif%}
 						    {% endfor %}
 						</fieldset>
@@ -64,7 +64,7 @@
 							<input type="submit" value="Ingresar"/>
 						</div>
 					</div>
-				</form>	
+				</form>
 				<script type="text/javascript">
 					document.getElementById('id_cedula_identidad').focus()
 				</script>
@@ -75,5 +75,3 @@
 	</div>
 </body>
 </html>
-
-
