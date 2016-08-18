@@ -23,23 +23,23 @@
 }
 
 .a-eliminar{
-	background: transparent url(/media/static/images/delete16.png) no-repeat scroll 0 0;
+	background: transparent url(/media/img/delete16.png) no-repeat scroll 0 0;
 }
 
 #a-agregar{
-	background: transparent url(/media/static/images/add1-16.png) no-repeat scroll 0 0;
+	background: transparent url(/media/img/add1-16.png) no-repeat scroll 0 0;
 }
 
 #a-cancelar{
-	background: transparent url(/media/static/images/cancel16.png) no-repeat scroll 0 0;
+	background: transparent url(/media/img/cancel16.png) no-repeat scroll 0 0;
 }
 
 .a-aumentar{
-	background: transparent url(/media/static/images/aumentar16.png) no-repeat scroll 0 0;
+	background: transparent url(/media/img/aumentar16.png) no-repeat scroll 0 0;
 }
 
 .a-disminuir{
-	background: transparent url(/media/static/images/disminuir16.png) no-repeat scroll 0 0;
+	background: transparent url(/media/img/disminuir16.png) no-repeat scroll 0 0;
 }
 
 #a-devolucion, #a-cancelar-venta, #a-cerrar-turno{
