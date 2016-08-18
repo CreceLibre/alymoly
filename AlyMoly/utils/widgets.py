@@ -25,5 +25,5 @@ class RutWidget(forms.TextInput):
 
     class Media:
         js = ( '/media/js/jquery.js',
-               '/media/static/js/jquery.Rut.min.js',
-               '/media/static/js/utils/widgets/rut/formato.js',)
+               '/media/js/jquery.Rut.min.js',
+               '/media/js/widgets/rut/formato.js',)
