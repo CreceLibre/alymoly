@@ -1,14 +1,14 @@
 /**
 # # # # # # # # # # # # # # # # # # # # # # # #
 # Todos los derechos reservados a:            #
-# CreceLibre Consultores en Tecnolog’as Ltda. #
+# CreceLibre Consultores en Tecnologï¿½as Ltda. #
 #                                             #
-# ©AndrŽs Ot‡rola Alvarado                    #
+# ï¿½Andrï¿½s Otï¿½rola Alvarado                    #
 # aotarola@crecelibre.cl                      #
 # 2009                                        #
 # # # # # # # # # # # # # # # # # # # # # # # #
 
-Permite la bœsqueda din‡mica en una tabla.
+Permite la bï¿½squeda dinï¿½mica en una tabla.
   
  */
 $(document).ready(function(){
@@ -16,10 +16,10 @@ $(document).ready(function(){
 	  position: 'before',
 	  attached: 'table#tabla_turnos',
 	  stripeRowClass: ['row1', 'row2'],
-	  labelText: '<img alt="Search" src="/media/admin/img/admin/icon_searchbox.png"/>',
+	  labelText: '<img alt="Search" src="/media/img/icon_searchbox.png"/>',
 	  formId:'changelist-search',
 	  inputText: 'Buscar...',
-	  loaderText: '<img alt="Search" src="/media/static/img/ajax-loader.gif"/>'
+	  loaderText: '<img alt="Search" src="/media/img/ajax-loader.gif"/>'
 	
 	});
 	

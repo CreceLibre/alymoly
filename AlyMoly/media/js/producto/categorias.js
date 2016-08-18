@@ -1,26 +1,22 @@
 /**
 # # # # # # # # # # # # # # # # # # # # # # # #
 # Todos los derechos reservados a:            #
-# CreceLibre Consultores en Tecnolog�as Ltda. #
+# CreceLibre Consultores en Tecnologías Ltda. #
 #                                             #
-# �Andr�s Ot�rola Alvarado                    #
+# Andrés Otárola Alvarado                     #
 # aotarola@crecelibre.cl                      #
 # 2009                                        #
 # # # # # # # # # # # # # # # # # # # # # # # #
 
- El siguiente script recarga el combobox de subcategor�a, dependiendo
- de la categor�a seleccionada
+ El siguiente script recarga el combobox de subcategoría, dependiendo
+ de la categoría seleccionada
  * */
 
 $(document).ready(function() {
 
     var categoria = $('select#id_categoria')
     var subcategoria = $('select#id_subcategoria')
-
-    var splitted_url = new String(window.location).split("/")
-
-    var product_id = splitted_url[splitted_url.length - 2]
-
+    var product_id = window.location.pathname.split('/')[4]
     subcategoria.empty()
 
     var actualizarSubcategoria = function(e) {
@@ -77,8 +73,9 @@ $(document).ready(function() {
     }
 
     if (product_id != 'add') {
-      $.getJSON("/admin/subcategoria_de_producto/" + "1764",
+      $.getJSON("/admin/subcategoria_de_producto/" + product_id + "/",
         function(data) {
+
           categoria.val(data.supercategoria)
           if (data.subcategoria) {
 
