@@ -1,5 +1,5 @@
 #-*- encoding: UTF-8 -*-
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, render
 from AlyMoly.reporte.forms import ExistenciaPorCategoriaForm, \
                          VentasPorTurnoForm, BuscarTurnoForm, \
                          ProductoForm, VentaMesForm, VentasGraficosForm, \
@@ -42,9 +42,9 @@ def productos(request):
     else:
         form = ProductoForm()
 
-    return render_to_response('reporte/productos.html', {
-        'form': form,
-    },context_instance=RequestContext(request))
+    return render(request, 'reporte/productos.html', {
+        'form': form
+    })
 
 @staff_member_required
 def existencias(request):
@@ -61,9 +61,9 @@ def existencias(request):
     else:
         form = ExistenciaPorCategoriaForm()
 
-    return render_to_response('reporte/existencias.html', {
-        'form': form,
-    },context_instance=RequestContext(request))
+    return render(request,'reporte/existencias.html', {
+        'form': form
+    })
 
 @staff_member_required
 def ventas(request):
@@ -88,8 +88,7 @@ def ventas(request):
         form = VentasPorTurnoForm()
 
     response.update({'form':form})
-    return render_to_response('reporte/ventas.html', response,
-                              context_instance=RequestContext(request))
+    return render(request, 'reporte/ventas.html', response)
 
 @staff_member_required
 def generar_ventas(request,turno_id,formato,resumen):

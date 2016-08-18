@@ -102,10 +102,10 @@ class VentasForm(TipoVentaForm):
 
     class Media:
         js = ('/media/js/jquery.js',
-              '/media/static/js/jquery-ui-datepicker.min.js',
-              '/media/static/js/reporte/ventas/seleccion_fecha.js',
+              '/media/js/jquery-ui-datepicker.min.js',
+              '/media/js/ventas/seleccion_fecha.js',
               )
-        css = {'all':('/media/static/css/datepicker/jquery-datepicker.css',)}
+        css = {'all':('/media/css/jquery-datepicker.css',)}
 
     def clean(self):
         """ Método de validación personalizado que válida si
@@ -140,10 +140,10 @@ class VentasDiariasForm(TipoVentaForm):
 
     class Media:
         js = ('/media/js/jquery.js',
-              '/media/static/js/jquery-ui-datepicker.min.js',
+              '/media/js/jquery-ui-datepicker.min.js',
               '/media/static/js/seleccion_fecha.js',
               )
-        css = {'all':('/media/static/css/datepicker/jquery-datepicker.css',)}
+        css = {'all':('/media/css/jquery-datepicker.css',)}
 
 class VentasPorTurnoForm(VentasForm):
     'Formulario de generación reporte de ventas por turno'
@@ -163,7 +163,7 @@ class VentasPorTurnoForm(VentasForm):
 
     class Media:
         js = ('/media/js/jquery.js',
-              '/media/static/js/reporte/forms/ventas_por_turno.js',
+              '/media/js/forms/ventas_por_turno.js',
               )
 
 class BuscarTurnoForm(forms.Form):
@@ -171,8 +171,8 @@ class BuscarTurnoForm(forms.Form):
     class Media:
         #Se carga la magia necesaria para recargar las subcategorías vía ajax
         js = (
-            '/media/static/js/jquery.quicksearch.pack.js',
-            '/media/static/js/reporte/forms/buscar_turno.js',
+            '/media/js/jquery.quicksearch.pack.js',
+            '/media/js/forms/buscar_turno.js',
         )
 
 
@@ -259,10 +259,10 @@ class VentasGraficosForm(ReporteForm):
 
     class Media:
         js = ('/media/js/jquery.js',
-              '/media/static/js/jquery-ui-datepicker.min.js',
-              '/media/static/js/reporte/ventas/seleccion_fecha.js',
+              '/media/js/jquery-ui-datepicker.min.js',
+              '/media/js/ventas/seleccion_fecha.js',
               )
-        css = {'all':('/media/static/css/datepicker/jquery-datepicker.css',)}
+        css = {'all':('/media/css/jquery-datepicker.css',)}
 
     def clean(self):
         """ Método de validación personalizado que válida si
@@ -327,10 +327,10 @@ class VentasGraficosPorCategoriaForm(ReporteForm):
 
     class Media:
         js = ('/media/js/jquery.js',
-              '/media/static/js/jquery-ui-datepicker.min.js',
-              '/media/static/js/reporte/ventas/seleccion_fecha.js',
+              '/media/js/jquery-ui-datepicker.min.js',
+              '/media/js/ventas/seleccion_fecha.js',
               )
-        css = {'all':('/media/static/css/datepicker/jquery-datepicker.css',)}
+        css = {'all':('/media/css/jquery-datepicker.css',)}
 
     def clean(self):
         """ Método de validación personalizado que válida si
