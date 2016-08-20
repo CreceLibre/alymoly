@@ -1,0 +1,34 @@
+{% extends "reporte/base.html" %}
+{% block main %}
+<table class="tabular-data">
+	<thead>
+    <tr>
+      <th colspan=4>Listado de Productos</th>
+    </tr>
+		<tr>
+      <th class="left">CODIGO</th>
+			<th class="left">PRODUCTO</th>
+			<th class="left">PRECIO COSTO</th>
+			<th class="right">PRECIO VENTA</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for producto in productos %}
+				<tr class="{% cycle "pair" "odd" %}">
+          <td class="price">
+					    {{ producto.codigo_barra }}
+					</td>
+					<td class="title">
+					    {{ producto }}
+					</td>
+					<td class="price">
+					    {{ producto.precio_costo }}
+					</td>
+					<td class="price">
+					    {{ producto.precio_venta }}
+					</td>
+				</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock%}

@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>{{ title }}</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<!-- stylesheets -->
+	<style type="text/css">
+    @page {
+	  margin: 1cm;
+	  margin-bottom: 1.5cm;
+	  background-image: url("{{ ROOT_PATH }}/media/static/css/background.pdf");
+	  @frame footer {
+	    -pdf-frame-content: footerContent;
+	    bottom: 0.5cm;
+	    margin-left: 1cm;
+	    margin-right: 1cm;
+	    height: 1cm;
+	  }
+	}
+
+	body {
+		font:12px/1.4em Verdana,sans-serif;
+	}
+	table.description {
+		font-size:0.9em;
+		margin-bottom:20px;
+	}
+
+	.dark-cell{
+		background-color:gray;
+		color:white;
+		font-weight:bold;
+	}
+
+	table.description tr .title {
+		font-weight:bold;
+		padding:5px;
+		width:140px;
+	}
+
+	table.description tr .title-mid {
+		font-weight:bold;
+		padding:5px;
+		width:128px;
+	}
+
+	table.description td tr{
+	border:0;
+	}
+
+	table.description tr .text {
+		padding-left:10px;
+	}
+	h1{
+		font-size:1.3em;
+		text-align:center;
+		text-decoration:underline;
+	}
+	h2{
+		font-size:1.2em;
+		text-align:left;
+		text-decoration:underline;
+	}
+
+	h3{
+		font-size:1.0em;
+		text-align:center;
+	}
+
+	table.tabular-data {
+		font-size:0.9em;
+		border: 2px solid #ffffff;
+	}
+
+	table.tabular-data thead{
+		background-color:gray;
+		color:white;
+	}
+
+	table.tabular-data tr{
+		padding: 5px;
+	}
+	.left, .title, .unit { text-align:left; }
+	.right, .quantity, .price { text-align:right; }
+	.center { text-align:center; }
+
+	.title { width:60%; }
+
+	.odd{ background-color:lightgray;}
+	.pair{ background-color:white;}
+
+    #footerContent .underline-footer{ border-top:1px solid #000000;margin-top:1px;}
+
+	</style>
+</head>
+<body>
+	{% block main %} {% endblock %}
+</body>
+</html>

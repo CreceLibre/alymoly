@@ -1,5 +1,5 @@
 #-*- encoding: UTF-8 -*-
-from django.shortcuts import render_to_response, render
+from django.shortcuts import render
 from AlyMoly.reporte.forms import ExistenciaPorCategoriaForm, \
                          VentasPorTurnoForm, BuscarTurnoForm, \
                          ProductoForm, VentaMesForm, VentasGraficosForm, \
@@ -19,6 +19,7 @@ from django.template import RequestContext
 from datetime import datetime
 from django.db.models import Max, Min
 from AlyMoly.settings import REPORT_IMAGE_DIR
+from AlyMoly.mantenedor.models import Producto, Promocion
 
 import fnmatch
 import os
@@ -30,15 +31,22 @@ def productos(request):
         form = ProductoForm(request.POST)
         if form.is_valid():
             tipo = int(form.cleaned_data['tipo_producto'])
-            reporte = {
-                ProductoForm.TODOS : Productos(form.cleaned_data),
-                ProductoForm.CODIGO_BARRA : ProductosCodigoBarra(form.cleaned_data),
-                ProductoForm.CODIGO_MANUAL: ProductosCodigoManual(form.cleaned_data),
-                ProductoForm.EXENTOS : ProductosExentos(form.cleaned_data),
-                ProductoForm.AFECTOS : ProductosAfectos(form.cleaned_data),
-                ProductoForm.PROMOCIONES : Promociones(form.cleaned_data)
-            }[tipo]
-            return reporte.get_response()
+            if tipo == ProductoForm.TODOS:
+                productos = Producto.objects.all()
+            elif tipo == ProductoForm.CODIGO_BARRA:
+                productos = Producto.objects.all().exclude(codigo_manual=True)
+            elif tipo == ProductoForm.CODIGO_MANUAL:
+                productos = Producto.objects.all().filter(codigo_manual=True)
+            elif tipo == ProductoForm.EXENTOS:
+                productos = Producto.objects.all().filter(exento_iva=True)
+            elif tipo == ProductoForm.AFECTOS:
+                productos = Producto.objects.all().exclude(exento_iva=True)
+            else:
+                productos = Promocion.objects.all()
+
+            return render(request, 'reporte/reporte_productos.html', {
+                'productos': productos
+            })
     else:
         form = ProductoForm()
 
@@ -121,9 +129,9 @@ def ventas_mes(request):
         form = VentaMesForm(anios=anios,dia=hoy)
         request.session['hoy'] = hoy
         request.session['anios'] = anios
-    return render_to_response('reporte/venta_mes.html', {
-        'form': form,
-    },context_instance=RequestContext(request))
+    return render(request, 'reporte/venta_mes.html', {
+        'form': form
+    })
 
 @staff_member_required
 def ventas_graficos_periodo_categoria(request):
@@ -144,9 +152,9 @@ def ventas_graficos_periodo_categoria(request):
                     return VentasGraficoPromocionPorCategoria(form.cleaned_data).get_response()
     else:
         form = VentasGraficosPorCategoriaForm()
-    return render_to_response('reporte/venta_grafico_periodo_categoria.html', {
+    return render(request, 'reporte/venta_grafico_periodo_categoria.html', {
         'form': form,
-    },context_instance=RequestContext(request))
+    })
 
 @staff_member_required
 def get_birt_img(request):

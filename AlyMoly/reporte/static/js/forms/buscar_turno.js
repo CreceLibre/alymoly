@@ -9,7 +9,7 @@
 # # # # # # # # # # # # # # # # # # # # # # # #
 
 Permite la b�squeda din�mica en una tabla.
-  
+
  */
 $(document).ready(function(){
 	$('table#tabla_turnos tbody tr').quicksearch({
@@ -20,14 +20,14 @@ $(document).ready(function(){
 	  formId:'changelist-search',
 	  inputText: 'Buscar...',
 	  loaderText: '<img alt="Search" src="/media/img/ajax-loader.gif"/>'
-	
+
 	});
-	
+
 	$('#changelist-search').append('<span style="float:right"><label for="id_proveedor" class="required inline">'+
             'Tipo Resumen : </label>'+
 			'<select id="id_resumen" name="tipo_resumen" style="width: 230px;">'+
 			'<option selected="selected" value="todos">GENERAL</option>'+
-			'<option value="todos_detalle">GENERAL DETALLE</option>'+			
+			'<option value="todos_detalle">GENERAL DETALLE</option>'+
 			'<option value="afectos">PRODUCTOS AFECTOS</option>'+
 			'<option value="exentos">PRODUCTOS EXENTOS</option>'+
 			'<option value="promociones">PROMOCIONES</option>'+
@@ -37,10 +37,9 @@ $(document).ready(function(){
             '<label for="id_proveedor" class="required inline"> Formato : </label>'+
 			'<select id="id_formato" name="formato" style="width: 230px;">'+
 			'<option selected="selected" value="html">HTML</option>'+
-			'<option value="pdf">PDF</option>'+
 			'</select><span>'
 			)
-	
+
 	$('.qs_input').keydown(function(e) {
 		if(e.keyCode == 13) {
 			return false;

@@ -141,6 +141,9 @@ class Promocion(models.Model):
     categoria = models.ForeignKey('Categoria', verbose_name=u"Categoría",
                                   help_text=u'Seleccione la categoría a la cual pertenece la promoción')
 
+    def codigo_barra(self):
+        return self.codigo
+
     def __unicode__(self):
         return u'%s' % (self.nombre)
 

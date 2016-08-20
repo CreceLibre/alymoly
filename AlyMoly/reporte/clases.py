@@ -67,7 +67,7 @@ class Reporte(object):
 
     HTML = 'html'
     PDF = 'pdf'
-    FORMATO = ( HTML, PDF )
+    FORMATO = ( HTML, )
 
     def __new__(self, *args):
         if self is Reporte :

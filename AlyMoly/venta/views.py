@@ -11,7 +11,6 @@
 ###############################################
 
 import json
-import pdb
 from PIL import Image, ImageDraw, ImageFont
 from datetime import datetime
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest
