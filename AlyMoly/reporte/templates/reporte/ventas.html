@@ -156,7 +156,7 @@
 						{{ turno.monto_exento|dineroformat}}
 					</td>
 					<td {% ifequal turno.estado 2 %} {% ifequal turno.monto_cierre_calculado turno.monto_cierre_informado %} class="total-ok" {% else %} class="total-bad" {% endifequal %}>
-						<a href="{% url ver_boleta turno.id %}"> {{turno.monto_cierre_informado|dineroformat}} </a> {% endifequal %}
+						<a href="{% url 'venta:ver_boleta' turno.id %}"> {{turno.monto_cierre_informado|dineroformat}} </a> {% endifequal %}
 					</td>
 					<td>
 						<a class="report-link" href="{% url 'reporte:ventas' %}{{turno.id}}">GENERAR</a>

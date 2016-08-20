@@ -17,7 +17,7 @@ urlpatterns = [
     url(r'^admin/reporte/', include('AlyMoly.reporte.urls', namespace='reporte')),
     url(r'^admin/inventario/', include('AlyMoly.inventario.urls', namespace='inventario')),
     url(r'^admin/utils/', include('AlyMoly.utils.urls', namespace='utils')),
-    url(r'^venta/', include('AlyMoly.venta.urls')),
+    url(r'^venta/', include('AlyMoly.venta.urls', namespace='venta')),
     url(r'^devolucion/', include('AlyMoly.devolucion.urls')),
     url(r'^admin/', include(admin.site.urls)),
 ]
