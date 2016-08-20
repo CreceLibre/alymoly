@@ -34,9 +34,12 @@ class ExistenciaPorCategoriaForm(ReporteForm):
                                label=u"Categoría",
                                help_text=u"Seleccione la categoría",
                                )
+
+    TODAS = 1
+    BASE_OPT = (TODAS,'TODAS')
     def __init__(self, *args, **kwargs):
         super(ExistenciaPorCategoriaForm, self).__init__(*args, **kwargs)
-        self.fields['categoria'].choices = [('-1','TODAS')] + \
+        self.fields['categoria'].choices = [ExistenciaPorCategoriaForm.BASE_OPT] + \
                                 map(lambda x: (x.id,x.nombre.title()),
                                 Categoria.objects.all())
 

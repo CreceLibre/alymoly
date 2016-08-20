@@ -20,9 +20,11 @@ from datetime import datetime
 from django.db.models import Max, Min
 from AlyMoly.settings import REPORT_IMAGE_DIR
 from AlyMoly.mantenedor.models import Producto, Promocion
+from AlyMoly.movimiento.models import ProductoBodega
 
 import fnmatch
 import os
+import pdb
 
 @staff_member_required
 def productos(request):
@@ -60,12 +62,21 @@ def existencias(request):
     if request.method == 'POST':
         form = ExistenciaPorCategoriaForm(request.POST)
         if form.is_valid():
-            categoria = form.cleaned_data['categoria']
-            if categoria == u'-1':
-                reporte = Existencias(form.cleaned_data)
+            categoria = int(form.cleaned_data['categoria'])
+            bodega = form.cleaned_data['bodega']
+
+            id_compuestos = Producto.objects.exclude(
+                compone=None).values_list('compone_id', flat=True)
+            if categoria == ExistenciaPorCategoriaForm.TODAS:
+                existencias = ProductoBodega.objects.filter(bodega=bodega).exclude(
+                    producto__in=id_compuestos).order_by('producto__nombre')
             else:
-                reporte = ExistenciaPorCategoria(form.cleaned_data)
-            return reporte.get_response()
+                existencias = ProductoBodega.objects.filter(bodega=bodega, producto__subcategoria=categoria).exclude(
+                    producto__in=id_compuestos).order_by('producto__nombre')
+
+            return render(request, 'reporte/reporte_existencias.html', {
+                'existencias': existencias
+            })
     else:
         form = ExistenciaPorCategoriaForm()
 
