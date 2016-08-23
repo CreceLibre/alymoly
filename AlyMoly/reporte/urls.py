@@ -12,7 +12,7 @@ urlpatterns = [
     url(r'^ventas/$',
         views.ventas,
         name='ventas'),
-    url(r'^ventas/(?P<turno_id>\d*)/(?P<formato>pdf|html)/(?P<resumen>todos|todos_detalle|afectos|exentos|promociones|devoluciones|stock_critico)/$',
+    url(r'^ventas/(?P<turno_id>\d*)/(?P<formato>pdf|html)/(?P<resumen>todos|afectos|exentos|promociones|devoluciones)/$',
         views.generar_ventas,
         name='generar_ventas'),
     url(r'^ventas/mes/$',

@@ -45,9 +45,7 @@ class CustomMenu(Menu):
                 ]),
                 MenuItem(title=_('Ventas'), children=[
                     MenuItem(title=_('Diarias'),
-                             url=reverse('reporte:ventas')),
-                    MenuItem(title=_('Mensuales'),
-                             url=reverse('reporte:ventas_mes')),
+                             url=reverse('reporte:ventas'))
                 ])
             ]
         ))

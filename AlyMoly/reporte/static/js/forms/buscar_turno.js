@@ -27,12 +27,10 @@ $(document).ready(function(){
             'Tipo Resumen : </label>'+
 			'<select id="id_resumen" name="tipo_resumen" style="width: 230px;">'+
 			'<option selected="selected" value="todos">GENERAL</option>'+
-			'<option value="todos_detalle">GENERAL DETALLE</option>'+
 			'<option value="afectos">PRODUCTOS AFECTOS</option>'+
 			'<option value="exentos">PRODUCTOS EXENTOS</option>'+
 			'<option value="promociones">PROMOCIONES</option>'+
 			'<option value="devoluciones">DEVOLUCIONES</option>'+
-			'<option value="stock_critico">STOCK CR&Iacute;TICO</option>'+
 			'</select><span>'+
             '<label for="id_proveedor" class="required inline"> Formato : </label>'+
 			'<select id="id_formato" name="formato" style="width: 230px;">'+

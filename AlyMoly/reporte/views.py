@@ -21,6 +21,8 @@ from django.db.models import Max, Min
 from AlyMoly.settings import REPORT_IMAGE_DIR
 from AlyMoly.mantenedor.models import Producto, Promocion
 from AlyMoly.movimiento.models import ProductoBodega
+from AlyMoly.venta.models import Turno
+from AlyMoly.devolucion.models import Devolucion
 
 import fnmatch
 import os
@@ -113,16 +115,39 @@ def ventas(request):
 def generar_ventas(request,turno_id,formato,resumen):
     """Vista que genera un reporte de ventas por
     turno"""
-    reporte = {
-        'todos' : VentasPorTurno({'turno':turno_id,'formato':formato}),
-        'todos_detalle': VentasPorTurnoDetalle({'turno':turno_id,'formato':formato}),
-        'exentos' : VentasPorTurnoResumenExentos({'turno':turno_id,'formato':formato}),
-        'afectos': VentasPorTurnoResumenAfectos({'turno':turno_id,'formato':formato}),
-        'promociones' : VentasPorTurnoResumenPromociones({'turno':turno_id,'formato':formato}),
-        'devoluciones' : VentasPorTurnoResumenDevoluciones({'turno':turno_id,'formato':formato}),
-        'stock_critico' : VentasPorTurnoResumenStockCritico({'turno':turno_id,'formato':formato})
-    }[resumen]
-    return reporte.get_response()
+
+    turno = Turno.objects.get(id=turno_id)
+    if resumen == 'todos':
+        txs = turno.venta_set.all()
+        template = 'reporte/reporte_venta.html'
+    elif resumen == 'afectos':
+        txs = turno.venta_set.exclude(lineadetalle__producto__exento_iva=True)
+        template = 'reporte/reporte_venta.html'
+    elif resumen == 'exentos':
+        txs = turno.venta_set.filter(lineadetalle__producto__exento_iva=True)
+        template = 'reporte/reporte_venta.html'
+    elif resumen == 'promociones':
+
+        txs = turno.venta_set.filter(lineadetalle__producto__isnull=True)
+        # pdb.set_trace()
+        template = 'reporte/reporte_promocion.html'
+    else:
+        txs = turno.devolucion_set.all()
+        template = 'reporte/reporte_devolucion.html'
+    return render(request, template, {
+        'turno': turno,
+        'txs': txs
+    })
+    # reporte = {
+    #     'todos' : VentasPorTurno({'turno':turno_id,'formato':formato}),
+    #     'todos_detalle': VentasPorTurnoDetalle({'turno':turno_id,'formato':formato}),
+    #     'exentos' : VentasPorTurnoResumenExentos({'turno':turno_id,'formato':formato}),
+    #     'afectos': VentasPorTurnoResumenAfectos({'turno':turno_id,'formato':formato}),
+    #     'promociones' : VentasPorTurnoResumenPromociones({'turno':turno_id,'formato':formato}),
+    #     'devoluciones' : VentasPorTurnoResumenDevoluciones({'turno':turno_id,'formato':formato}),
+    #     'stock_critico' : VentasPorTurnoResumenStockCritico({'turno':turno_id,'formato':formato})
+    # }[resumen]
+    # return reporte.get_response()
 
 @staff_member_required
 def ventas_mes(request):
