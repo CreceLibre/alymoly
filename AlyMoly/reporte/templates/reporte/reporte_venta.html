@@ -1,0 +1,134 @@
+{% extends "reporte/base.html" %} {% block main %}
+
+<table class="tabular-data">
+	<thead>
+		<tr>
+			<th colspan=2>INFORMACION GENERAL DE TURNO</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="title">
+				FECHA APERTURA
+			</td>
+			<td class="title">
+				{{ turno.fecha_apertura_sistema }}
+			</td>
+		</tr>
+		<tr>
+			<td class="title">
+				FECHA CIERRE
+			</td>
+			<td class="title">
+				{{ turno.fecha_cierre_sistema|default:"N/A" }}
+			</td>
+		</tr>
+		<tr>
+			<td class="title">
+				ESTADO
+			</td>
+			<td class="title">
+				{{ turno.estado_turno }}
+			</td>
+		</tr>
+		<tr>
+			<td class="title">
+				NOMBRE
+			</td>
+			<td class="title">
+				{{ turno.trabajador.nombre_completo }}
+			</td>
+		</tr>
+		<tr>
+			<td class="title">
+				MONTO APERTURA
+			</td>
+			<td class="title">
+				{{ turno.monto_apertura_caja }}
+			</td>
+		</tr>
+		<tr>
+			<td class="title">
+				TOTAL AFECTO
+			</td>
+			<td class="title">
+				{{ turno.monto_afecto }}
+			</td>
+		</tr>
+		<tr>
+			<td class="title">
+				TOTAL EXENTO
+			</td>
+			<td class="title">
+				{{ turno.monto_exento }}
+			</td>
+		</tr>
+		<tr>
+			<td class="title">
+				MONTO CIERRE INFORMADO
+			</td>
+			<td class="title">
+				{{ turno.monto_cierre_informado|default:"N/A" }}
+			</td>
+		</tr>
+		<tr>
+			<td class="title">
+				MONTO CIERRE SISTEMA
+			</td>
+			<td class="title">
+				{{ turno.monto_cierre_calculado }}
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+{% if not txs %}
+<br />
+<h2 style="text-decoration:none">NO SE ENCONTRARON RESULTADOS</h2>
+{% endif %}
+
+{% for tx in txs %}
+<table class="tabular-data">
+	<thead>
+		<tr>
+			<th colspan=5>DETALLE DE VENTA</th>
+		</tr>
+		<tr>
+			<th>HORA DE VENTA</th>
+			<th colspan=4>{{ tx.fecha_venta }}</th>
+		</tr>
+		<tr>
+			<th class="left">CODIGO</th>
+			<th class="left">PRODUCTO</th>
+			<th class="left">CANTIDAD</th>
+			<th class="right">PRECIO</th>
+			<th class="right">TOTAL</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for detalle in tx.lineadetalle_set.all %}
+		<tr class="{% cycle " pair " "odd " %}">
+			<td class="price">
+				{{ detalle.producto.codigo_barra }}
+			</td>
+			<td class="title">
+				{{ detalle.producto }}
+			</td>
+			<td class="price">
+				{{ detalle.cantidad }}
+			</td>
+			<td class="price">
+				{{ detalle.precio_venta }}
+			</td>
+			<td class="price">
+				{{ detalle.precio_venta_total }}
+			</td>
+		</tr>
+		{% endfor %}
+		<tr>
+			<td colspan=4></td>
+			<td class="price">{{ venta.monto_total }}</td>
+		</tr>
+	</tbody>
+</table>
+{% endfor %} {% endblock%}
