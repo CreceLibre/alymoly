@@ -34,9 +34,9 @@ def detalle_producto(request,id):
     try:
         producto = Producto.objects.get(id=id)
     except Producto.DoesNotExist:
-        return HttpResponseBadRequest()
+        return JsonResponse({}, status=400)
     data = model_to_dict(producto)
-    return HttpResponse(json.dumps(data),mimetype="application/json")
+    return JsonResponse(data,safe=False)
 
 def sucursal(request):
     return HttpResponse(json.dumps({'nombre_sucursal':SUCURSAL_NOMBRE}),content_type="text/plain")
