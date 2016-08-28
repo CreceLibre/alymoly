@@ -17,7 +17,6 @@ from localflavor.cl.forms import CLRutField
 from django.core.exceptions import ObjectDoesNotExist
 from AlyMoly.utils import widgets
 
-
 class ProductoForm(forms.ModelForm):
     # atributo virtual ;)
     codigo_barra = forms.RegexField(label=u"Código de barra",
@@ -130,11 +129,9 @@ class ProductoForm(forms.ModelForm):
 
     def save(self, commit=True):
         producto = super(ProductoForm, self).save(commit=False)
-        producto.chavo = 8
         if producto.es_compuesto:
-            producto._compuesto_por = self.cleaned_data["compuesto_por"]
-            producto._cantidad_compone = self.cleaned_data[
-                "cantidad_compuesto"]
+            setattr(producto,'_compuesto_por',self.cleaned_data["compuesto_por"])
+            setattr(producto,'_cantidad_compone',self.cleaned_data["cantidad_compuesto"])
         return producto
 
     class Meta:
@@ -258,7 +255,6 @@ class ProveedorForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ProveedorForm, self).__init__(*args, **kwargs)
         try:
-            # pdb.set_trace()
             if kwargs['instance']:
                 self.initial['rut'] = unicode(
                     kwargs['instance'].rut) + kwargs['instance'].dv

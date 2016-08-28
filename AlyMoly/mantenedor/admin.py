@@ -27,7 +27,6 @@ class ProductoAdmin(admin.ModelAdmin):
 
     )
 
-
 class BodegaAdmin(admin.ModelAdmin):
     form = BodegaForm
     list_display = ('ubicacion','venta')
@@ -103,7 +102,6 @@ class ProveedorAdmin(admin.ModelAdmin):
                         )
             }),
     )
-
 
 class TrabajadorAdmin(admin.ModelAdmin):
     list_display = ('nombre','apellido_paterno','apellido_materno','es_activo')

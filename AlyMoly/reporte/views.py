@@ -26,7 +26,6 @@ from AlyMoly.devolucion.models import Devolucion
 
 import fnmatch
 import os
-import pdb
 
 @staff_member_required
 def productos(request):
@@ -129,7 +128,6 @@ def generar_ventas(request,turno_id,formato,resumen):
     elif resumen == 'promociones':
 
         txs = turno.venta_set.filter(lineadetalle__producto__isnull=True)
-        # pdb.set_trace()
         template = 'reporte/reporte_promocion.html'
     else:
         txs = turno.devolucion_set.all()

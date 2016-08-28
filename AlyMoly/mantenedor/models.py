@@ -21,7 +21,6 @@ from AlyMoly.mantenedor.signals import calcular_dv_trabajador
 from AlyMoly.mantenedor.signals import iniciar_nuevo_inventario
 from AlyMoly.mantenedor.signals import nuevo_producto_inventario
 
-
 class Categoria(models.Model):
     """Representa una categoria a la que pertenece un producto"""
     nombre = models.CharField(
@@ -95,11 +94,10 @@ class Producto(models.Model):
 
     def save(self, force_insert=False, force_update=False):
         super(Producto, self).save(force_insert, force_update)
-
         if self.es_compuesto:
-            p = Producto.objects.get(codigo_barra=self._compuesto_por)
+            p = Producto.objects.get(codigo_barra=getattr(self,'_compuesto_por'))
             p.compone = self
-            p.cantidad_compone = self._cantidad_compone
+            p.cantidad_compone = getattr(self,'_cantidad_compone')
             p.save()
 
     class Meta:
