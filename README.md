@@ -65,8 +65,8 @@ LoadModule wsgi_module modules/mod_wsgi.so
 ```
 Ahora en el mismo archivo agrega la siguiente configuracion (reemplaza el valr de `USUARIO` con el valor que corresponde a tu cuenta de usuario:
 ```xml
-WSGIScriptAlias / "C:/Users/aotarola/app/alymoly-master/wsgi.py"
-WSGIPythonPath "C:/Users/aotarola/app/alymoly-master"
+WSGIScriptAlias / "C:/Users/USUARIO/app/alymoly-master/wsgi.py"
+WSGIPythonPath "C:/Users/USUARIO/app/alymoly-master"
 
 <Directory "C:/Users/USUARIO/app/alymoly-master">
 <Files wsgi.py>
