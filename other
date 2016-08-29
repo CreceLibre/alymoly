@@ -1,2 +1,0 @@
-psql -U alymoly -d alymoly -f FILENAME
-\i 'C:/Users/USERNAME/Downloads/alymoly/alymoly.backup'
