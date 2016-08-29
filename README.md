@@ -82,8 +82,8 @@ Require all granted
 
 ```
 
-Reinicia el servidor usando el monitor de `XAMPP` y prueba el sistema yendo a http://localhost/admin
+Reinicia el servidor como administrador usando el monitor de `XAMPP` y prueba el sistema yendo a http://localhost/admin (marca la opcion de `Service` en el monitor para Apache, asi se iniciara cada vez que se encienda el PC). Probablemente tengas que deshabilitar el Control de cuentas de usuario de Widows, puedes ver como hacer eso en [este](http://www.howtogeek.com/howto/windows-vista/disable-user-account-control-uac-the-easy-way-on-windows-vista/) elink
 
-Si todo anda bien solo queda reiniciar el computador y verificar que todo inicie correctamente.
+Si todo anda bien solo queda reiniciar el computador y verificar que todo inicie correctamente
 
 :sushi:
