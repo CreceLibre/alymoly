@@ -3,9 +3,11 @@
 ## Descarga de programas y archivos
 * [Descargar](http://archivos.crecelibre.cl/alymoly.zip) la base de datos
 * [Descargar](https://github.com/CreceLibre/alymoly/archive/master.zip) el app de github
+* [Descargar](https://drive.google.com/file/d/0ByCItVM01v6eZnVnbmRWTlJuZDQ/view) mod_wsgi.so
 * [Instalar](https://www.python.org/downloads/) python2.7.x  
 * [instalar](https://pip.pypa.io/en/latest/installing/) pip  (Para esta instalacion; `C:\Python27` debe estar en el `path` de windows )
 * [Instalar](https://www.postgresql.org/download/windows/) PostgreSQL 9.5.4
+* [Instalar](https://www.apachefriends.org/xampp-files/5.5.37/xampp-win32-5.5.37-0-VC11-installer.exe) XAMPP (solo selecciona `Apache` en el instalador)
 
 ## Setup
 
@@ -55,3 +57,33 @@ python manage.py runserver
 Ahora que el servidor de prueba esta en ejecucion, abrimos la siguiente direccion en nuestro browser: http://127.0.0.1:8000/admin
 
 Si todo anda bien, se podra ver la pantalla de login.
+
+## Configuracion de apache y mod_wsgi
+Copia el archivo que descargaste anteriormente `mod_wsgi` dentro de `apache/modules`, luego abre el archivo `apache/conf/httpd.conf`. Ahora hay que habilitar mod_wsgi incluyendo la siguiente linea
+```xml
+LoadModule wsgi_module modules/mod_wsgi.so
+```
+Ahora en el mismo archivo agrega la siguiente configuracion (reemplaza el valr de `USUARIO` con el valor que corresponde a tu cuenta de usuario:
+```xml
+WSGIScriptAlias / "C:/Users/aotarola/app/alymoly-master/wsgi.py"
+WSGIPythonPath "C:/Users/aotarola/app/alymoly-master"
+
+<Directory "C:/Users/USUARIO/app/alymoly-master">
+<Files wsgi.py>
+Require all granted
+</Files>
+</Directory>
+
+Alias /media/  "C:/Users/USUARIO/app/alymoly-master/AlyMoly/media/"
+
+<Directory "C:/Users/USUARIO/app/alymoly-master/AlyMoly/media/">
+Require all granted
+</Directory>
+
+```
+
+Reinicia el servidor usando el monitor de `XAMPP` y prueba el sistema yendo a http://localhost/admin
+
+Si todo anda bien solo queda reiniciar el computador y verificar que todo inicie correctamente.
+
+:sushi:
