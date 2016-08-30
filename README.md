@@ -24,6 +24,12 @@ cd app\alymoly-master
 ```
 Si todo estuvo bien configurado, deberias poder ver la raiz de la aplicacion si tipeas `dir`
 
+Ahora hay que renombrar algunos archivos
+```bash
+cd app\alymoly-master\AlyMoly
+copy settings.py.copyme settings.py
+copy setup.py.copyme setup.py
+```
 El proximo paso es instalar las librerias ncesarias de la aplicacion, en la misma ventana de `cmd` que se uso anteriormente tipear lo siguiente:
 ```bash
 pip install -r requirements.txt
