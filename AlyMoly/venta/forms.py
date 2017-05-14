@@ -5,8 +5,8 @@
 # Todos los derechos reservados a:            #
 # CreceLibre Consultores en Tecnolog�as Ltda. #
 #                                             #
-# �Milton Inostroza Aguilera                  #
-# minostro@crecelibre.cl                      #
+# ©Milton Inostroza Aguilera                  #
+# minostro@minostro.com                       #
 # 2009                                        #
 ###############################################
 from django import forms

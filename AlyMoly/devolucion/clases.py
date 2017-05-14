@@ -5,8 +5,7 @@
 # Todos los derechos reservados a:            #
 # CreceLibre Consultores en Tecnologías Ltda. #
 #                                             #
-# �Milton Inostroza Aguilera                  #
-# minostro@crecelibre.cl                      #
+# ©Milton Inostroza Aguilera                  #
 # 2009                                        #
 ###############################################
 

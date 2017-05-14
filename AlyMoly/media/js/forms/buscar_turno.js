@@ -1,14 +1,14 @@
 /**
 # # # # # # # # # # # # # # # # # # # # # # # #
 # Todos los derechos reservados a:            #
-# CreceLibre Consultores en Tecnolog�as Ltda. #
+# CreceLibre Consultores en Tecnologías Ltda. #
 #                                             #
-# �Andr�s Ot�rola Alvarado                    #
-# aotarola@crecelibre.cl                      #
+# ©Andrés Otárola Alvarado                    #
+# andres@otarola.me                           #
 # 2009                                        #
 # # # # # # # # # # # # # # # # # # # # # # # #
 
-Permite la b�squeda din�mica en una tabla.
+Permite la búsqueda dinámica en una tabla.
 
  */
 $(document).ready(function(){

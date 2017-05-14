@@ -1,10 +1,10 @@
 /**
 # # # # # # # # # # # # # # # # # # # # # # # #
 # Todos los derechos reservados a:            #
-# CreceLibre Consultores en Tecnolog’as Ltda. #
+# CreceLibre Consultores en Tecnologías Ltda. #
 #                                             #
-# ©AndrŽs Ot‡rola Alvarado                    #
-# aotarola@crecelibre.cl                      #
+# ©Andrés Otárola Alvarado                    #
+# andres@otarola.me                           #
 # 2009                                        #
 # # # # # # # # # # # # # # # # # # # # # # # #
   

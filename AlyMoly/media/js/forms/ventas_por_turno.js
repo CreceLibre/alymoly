@@ -3,8 +3,8 @@
 # Todos los derechos reservados a:            #
 # CreceLibre Consultores en Tecnolog’as Ltda. #
 #                                             #
-# ©AndrŽs Ot‡rola Alvarado                    #
-# aotarola@crecelibre.cl                      #
+# ©Andrés Otárola Alvarado                    #
+# andres@otarola.me                           #
 # 2009                                        #
 # # # # # # # # # # # # # # # # # # # # # # # #
 

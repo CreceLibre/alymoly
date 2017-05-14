@@ -3,12 +3,12 @@
 # Todos los derechos reservados a:            #
 # CreceLibre Consultores en Tecnolog’as Ltda. #
 #                                             #
-# ©AndrŽs Ot‡rola Alvarado                    #
-# aotarola@crecelibre.cl                      #
+# ©Andrés Otárola Alvarado                    #
+# andres@otarola.me                           #
 # 2009                                        #
 # # # # # # # # # # # # # # # # # # # # # # # #
   
- El siguiente script recarga v’a ajax el stock actual, cuando es seleccionada una bodega
+ El siguiente script recarga vía ajax el stock actual, cuando es seleccionada una bodega
   
  */
 var actualiza_existencias = function(){

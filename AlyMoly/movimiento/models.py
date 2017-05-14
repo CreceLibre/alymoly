@@ -3,8 +3,8 @@
 # Todos los derechos reservados a:            #
 # CreceLibre Consultores en Tecnologías Ltda. #
 #                                             #
-# Milton Inostroza Aguilera                   #
-# minostro@crecelibre.cl                      #
+# ©Milton Inostroza Aguilera                  #
+# minostro@minostro.com                       #
 # 2009                                        #
 ###############################################
 from django.db import models

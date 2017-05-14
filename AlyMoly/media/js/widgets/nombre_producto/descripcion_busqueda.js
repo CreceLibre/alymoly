@@ -4,7 +4,7 @@
 # CreceLibre Consultores en Tecnologías Ltda. #
 #                                             #
 # ©Andrés Otárola Alvarado                    #
-# aotarola@crecelibre.cl                      #
+# andres@otarola.me                           #
 # 2009                                        #
 # # # # # # # # # # # # # # # # # # # # # # # #
 

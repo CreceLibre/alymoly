@@ -3,10 +3,10 @@
 
 ###############################################
 # Todos los derechos reservados a:            #
-# CreceLibre Consultores en Tecnolog�as Ltda. #
+# CreceLibre Consultores en Tecnologías Ltda. #
 #                                             #
 # ©Milton Inostroza Aguilera                  #
-# minostro@crecelibre.cl                      #
+# minostro@minostro.com                       #
 # 2009                                        #
 ###############################################
 

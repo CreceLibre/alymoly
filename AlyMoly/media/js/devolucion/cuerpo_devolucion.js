@@ -4,7 +4,7 @@
 # CreceLibre Consultores en Tecnolog’as Ltda. #
 #                                             #
 # ©Milton Inostroza Aguilera                  #
-# minostro@crecelibre.cl                      #
+# minostro@minostro.com                       #
 # 2009                                        #
 # # # # # # # # # # # # # # # # # # # # # # # #
   
